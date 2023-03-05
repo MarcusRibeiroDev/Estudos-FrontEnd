@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes animation{
+            from {left: 0px;}
+            to {margin-left: 600px;}
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: aqua;
+            margin: 10px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation-name: animation;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        #animation-div4{
+            animation-timing-function: linear;
+        }
+        #animation-div5{
+            animation-timing-function: ease;
+        }
+        #animation-div6{
+            animation-timing-function: ease-in;
+        }
+        #animation-div7{
+            animation-timing-function: ease-out;
+        }
+        #animation-div8{
+            animation-timing-function: ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box" id="animation-div4">linear</div>
+	<div class="box" id="animation-div5">ease</div>
+	<div class="box" id="animation-div6">ease-in</div>
+	<div class="box" id="animation-div7">ease-out</div>
+	<div class="box" id="animation-div8">ease-in-out</div>
+</body>
+</html>

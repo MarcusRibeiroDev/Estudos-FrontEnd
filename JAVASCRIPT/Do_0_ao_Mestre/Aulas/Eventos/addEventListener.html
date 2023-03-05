@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Eventos</h1>
+
+    <button id="btn1">btn 1</button>
+    <button id="btn2">btn 2</button>
+    <button id="btn3">btn 3</button>
+
+    <script>
+
+        const btn1 = document.querySelector('#btn1')
+        const btn2 = document.querySelector('#btn2')
+        const btn3 = document.querySelector('#btn3')
+
+        const clicou = function(){
+            console.log('Você clicou no btn1')
+        }
+
+        btn1.addEventListener('click', clicou)
+
+        btn2.addEventListener('click', ()=>{
+            console.log('Você clicou no btn2')
+        })
+
+        // Usando o terceiro parâmetro de propagação false = propaga para cima na arvore do DOM e true propaga para baixo
+
+        btn3.addEventListener('click',()=>{
+            console.log('Você clicou no btn3')
+        },)
+
+        document.addEventListener('click',(e)=>{
+            console.log('Você clicou no document')
+            e.stopPropagation() // Essa função faz a parada da propagação após sair do primeiro elemento
+        },true) // Isso faz que clicando no botão 3 apareça essa função primeiro, e no modo default(false aparecia a função btn3)
+
+    </script>
+</body>
+</html>

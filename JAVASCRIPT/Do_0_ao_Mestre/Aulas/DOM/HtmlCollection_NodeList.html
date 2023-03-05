@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul id="list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+    </div>
+
+    <script>
+        const nodeList = document.querySelectorAll('#list li') // document.querySelectorAll = Irá criar uma NodeList
+        const collectionList = document.getElementById('list').getElementsByTagName('li') // document.getElementById = Irá criar uma HTMLcollection
+
+        console.log(nodeList,collectionList)
+
+        document.querySelector('#list').innerHTML += '<li>Item 6</li>'
+
+        console.log(nodeList,collectionList) // HTMLcollection é mutável, pode ser alterado, uma NodeList é imutável, não pode ser alterada
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Atividade 1
+
+        /*let n1 = parseFloat(prompt('Digite a primeira nota'));
+        let n2 = parseFloat(prompt('Digite a segunda nota'));
+        let media = (n1+n2)/2;
+
+        if(media > 5){
+            alert(`O aluno está aprovado!`);
+        }
+        else{
+            alert(`O aluno está reprovado!`);
+        }*/
+
+        // Atividade 2
+
+        let n1 = parseFloat(prompt('Digite a primeira nota'));
+        let n2 = parseFloat(prompt('Digite a segunda nota'));
+        let media = (n1+n2)/2;
+
+        // Usando estrutura E &&
+
+        /*if(n1 && n2 != 0){
+            if(media > 5){
+            alert(`O aluno está aprovado!`);
+            }
+            else{
+                alert(`O aluno está reprovado!`);
+            }
+        }
+        else{
+            alert(`O aluno está reprovado, pois tirou uma nota 0`)
+        }*/
+
+        // Usando a estrutura OU ||
+
+        if(n1 === 0 || n2 === 0){
+            alert(`O aluno está reprovado, pois tirou uma nota 0`)
+        }
+        else{
+            if(media > 5){
+            alert(`O aluno está aprovado!`);
+            }
+            else{
+                alert(`O aluno está reprovado!`);
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

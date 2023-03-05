@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: #ccc;
+            padding: 10px;
+        }
+        p{
+            border: solid red 1px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+        <p class="text_2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+    </div>
+    <script>
+        const endElement = document.querySelector('.container').lastElementChild
+        const newElement = document.createElement('div')
+        const _container = document.querySelector('.container')
+        const secondP = document.querySelector('.text_2')
+
+        endElement.remove() // Removendo elemento escolhido
+        newElement.setAttribute('style','height:20px; width:1000px; background:green;')
+        newElement.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae'
+
+        _container.replaceChild(newElement,secondP) // Substituindo, 1º NOVO ELEMENTO - 2º VELHO ELEMENTO
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Teste DOM</h1>
+
+    <div class="container">
+        <h3>Lista</h3>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2
+                <ul>
+                    <li>Item 2.a</li>
+                    <li>Item 3.a</li>
+                    <li class="li-lista">Item 4.a</li>
+                </ul>
+            </li>
+            <li class="list-link">
+                Item <a href="...">Link</a>
+                <h6>Outros</h6>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        const link = document.querySelector('.list-link')
+
+        console.log(link.children) // Navega apenas sobre os nós do tipo elemento
+        console.log(link.childNodes) // Navega em todos os tipos do nós
+        console.log(link.firstChild) // Navega sobre o primeiro nó 
+        console.log(link.firstElementChild) // Navega sobre o primeiro nó do tipo elemento
+        console.log(link.lastChild) // Navega sobre o ultimo nó 
+        console.log(link.lastElementChild) // Navega sobre p ultimo nó do tipo elemento
+
+        console.log(link.hasChildNodes()) // Função que retorna um boolean true/false caso exista algum tipo de nó dentro do elemento
+
+    </script>
+</body>
+</html>

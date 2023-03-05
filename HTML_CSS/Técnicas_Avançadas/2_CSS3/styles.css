@@ -1,0 +1,269 @@
+/* animations */
+@keyframes animacao {
+	from {background-color: red;}
+	to {background-color: yellow;}
+}
+
+@keyframes animacao2 {
+	0% {}
+	30% {width: 100px;}
+	60% {background-color: red;}
+	80% {left: 100px; background-color: blue;}
+	100% {height: 100px;}
+}
+
+@keyframes animacao3 {
+	from {left: 0;}
+	to {left: 200px; background-color: green}
+}
+
+@keyframes animacao4 {
+	from {left: 0;}
+	to {left: 500px;}
+}
+
+@keyframes animacao5 {
+	0% {left: 0px;}
+	25% {left: 20px; background-color: blue;}
+	60% {left: 100px; background-color: orange;}
+	100% {left: 50px; background-color: red;}
+}
+
+.animation-div {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	animation-name: animacao;
+	animation-duration: 5s;
+}
+
+.animation-div2 {
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	animation-name: animacao2;
+	animation-duration: 6s;
+	position: relative;
+}
+
+/* animation delay e iteration */
+.animation-div3 {
+	width: 100px;
+	height: 100px;
+	background-color: purple;
+	position: relative;
+	animation-name: animacao3;
+	animation-duration: 3s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+}
+
+/* timing function */
+.box {
+	background-color: orange;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	animation-name: animacao4;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+
+#animation-div4 {
+	animation-timing-function: linear;
+}
+
+#animation-div5 {
+	animation-timing-function: ease;
+}
+
+#animation-div6 {
+	animation-timing-function: ease-in;
+}
+
+#animation-div7 {
+	animation-timing-function: ease-out;
+}
+
+#animation-div8 {
+	animation-timing-function: ease-in-out;
+}
+
+/* shorthand - nome, duração, timing-function, delay, iteration  */
+#animation-div9 {
+	background-color: darkblue;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	animation: animacao5 8s ease-out 4s infinite;
+}
+
+/* transition */
+.btn {
+	display: block;
+	position: relative;
+	padding: 10px;
+	margin-bottom: 25px;
+	width: 150px
+	height: 75px;
+	color: #FFF;
+	text-transform: uppercase;
+	background-color: #333;
+	border: 1px solid #333;
+	cursor: pointer;
+	text-align: center;
+	transition: 1s;
+}
+
+.btn:hover {
+	color: #333;
+	background-color: #FFF;
+}
+
+.transition {
+	width: 50px;
+	height: 100px;
+	background-color: red;
+	transition: 4s;
+}
+
+.transition:hover {
+	width: 300px;
+}
+
+/* calc */
+
+.div-calc {
+	height: 250px;
+	width: 500px;
+	position: relative;
+	margin: 20px;
+	background-color: #DDD;
+	border: 1px solid red;
+}
+
+.innerdiv-calc {
+	height: 50px;
+	margin: 10px;
+	position: relative;
+	background-color: red;
+}
+
+.calc1 {
+	width: calc(50% + 50px);
+}
+
+.calc2 {
+	width: calc(50% - 50px);
+}
+
+.calc3 {
+	width: calc(50% * 2);
+	margin: 0;
+}
+
+.calc4 {
+	width: calc(50% / 2);
+}
+
+/* gradient */
+
+.gradient-box {
+	width: 500px;
+	height: 200px;
+	position: relative;
+	margin: 20px;
+}
+
+.gradient1 {
+	background-image: linear-gradient(purple, blue);
+}
+
+.gradient2 {
+	background-image: linear-gradient(to right, purple, blue);
+}
+
+.gradient3 {
+	background-image: linear-gradient(to left, red, yellow);
+}
+
+.gradient4 {
+	background-image: linear-gradient(to top, red, yellow);
+}
+
+.gradient5 {
+	background-image: linear-gradient(to top right, purple, blue);
+}
+
+.gradient6 {
+	background-image: linear-gradient(#FFF, #CCC, #000);
+}
+
+.gradient7 {
+	background-image: radial-gradient(#3A3042, #DB9D47, #FF784F);
+}
+
+.gradient8 {
+	background-image: radial-gradient(#3A3042 10%, #DB9D47 30%, #FF784F);
+}
+
+.gradient9 {
+	background-image: radial-gradient(circle, #3A3042, #DB9D47, #FF784F);
+}
+
+/* font face */
+@font-face {
+	font-family: "Lage Grafica";
+	src: url(fonts/lage_grafica.ttf);
+}
+
+.fontface {
+	font-family: "Lage Grafica";
+}
+
+/* media query */
+
+.mediaquery {
+	height: 200px;
+	width: 1200px;
+	background-color: red;
+}
+
+@media (max-width: 1000px) {
+	.mediaquery {
+		width: 500px;
+		background-color: blue;
+	}
+}
+
+@media (max-width: 768px) {
+	.mediaquery {
+		width: 300px;
+		background-color: green;
+	}
+}
+
+@media (max-width: 512px) {
+	.mediaquery {
+		width: 200px;
+		background-color: pink;
+	}
+}
+
+/* border radius */
+
+.div-border {
+	width: 100px;
+	height: 100px;
+	background-color: purple;
+	margin: 20px;
+}
+
+.border-radius1 {
+	border-radius: 50%;
+}
+
+.border-radius2 {
+	border-top-right-radius: 20px;
+	border-bottom-left-radius: 40px;
+}

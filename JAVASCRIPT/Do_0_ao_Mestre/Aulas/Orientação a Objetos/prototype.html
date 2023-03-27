@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Animal(e){
+            if(e) this.especie = e
+        }
+
+        Animal.prototype.obterTipo = function(){
+            return this.especie
+        }
+
+        Animal.prototype.especie = 'Desconhecido'
+
+        let cobra = new Animal("Reptil")
+
+        let onca = new Animal("Mamifero")
+
+        let peixe = new Animal()
+
+    </script>
+</body>
+</html>

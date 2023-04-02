@@ -20,22 +20,22 @@
             }
 
             obterTipo(){
-                return this.tipo // Adicion as funções fora do constructor para que ele fique no prototype e economize armazenamento na memória
+                return this.tipo
             }
 
         }
 
-        Animal.prototype.tipo = 'desconhecido'
+        class AnimalC extends Animal{
+            constructor(nome){
+                super("Mamífero") // É necessário colocar o super para resgatar a propriedade que você quer utilizar
+                this.nome = nome
+            }
+        }
 
-        let cachorro = new Animal('Mamífero')
-        let borboleta = new Animal('Antrópode')
-        let peixe = new Animal()
+        let bob = new AnimalC('Bob')
 
-        console.log(cachorro)
-        console.log(borboleta)
-        console.log(peixe)
+        console.log(bob)
 
     </script>
-
 </body>
 </html>

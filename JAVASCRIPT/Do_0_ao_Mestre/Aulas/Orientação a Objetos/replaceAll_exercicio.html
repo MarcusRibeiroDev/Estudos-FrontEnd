@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        if(String.prototype.replaceAll){
+            String.prototype.replaceAll = function(busca, troca){
+
+                if(!(busca instanceof String || typeof busca === 'string')){
+                    throw Error('O primeiro parâmetro precisa ser uma String')
+                } // Verifica se a instância é de uma string ou se o tipo é
+
+                if(!(troca instanceof String || typeof troca === 'string')){
+                    throw Error('O segundo parâmetro precisa ser uma String')
+                } // Verifica se a instância é de uma string ou se o tipo é
+
+                return this.valueOf().split(busca).join(troca) // Busca a a letra no 1 parâmetro e substitui pelo 2 parâmetro
+
+            }
+        }
+
+        let str = 'Olá mundo'
+
+        let str1 = 'Opa beleza'
+
+        console.log(str.replaceAll('u','a'))
+
+        console.log(str1.replaceAll('O','E'))
+
+
+    </script>
+</body>
+</html>

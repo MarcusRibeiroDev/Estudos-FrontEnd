@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class ContaBancaria {
+            
+            constructor(cliente){
+
+                if(this.constructor === ContaBancaria){
+                throw new Error("ContaBancaria é uma classe abstrata")
+            }
+
+                this.cliente = cliente
+                this.saldo = 0
+
+            }
+
+            depositar(valor){
+
+                this.saldo = this.saldo + valor
+                this.aniversario = Date.now() // Atualiza a data que foi depositado
+
+            }
+
+            sacar(valor){
+
+                if(valor > this.saldo){
+
+                    console.log("Saldo insuficiente")
+                    return
+
+                } else if(this.limite < valor){
+
+                    console.log(`
+                    Seu limite atual para saque é ${this.limite}, não é possível realizar o saque.
+                    Caso precise ajuste seu limite para saque.
+                    `)
+                    return
+
+                }
+
+                this.saldo = this.saldo - valor
+            }
+
+        }
+
+        class ContaCorrente extends ContaBancaria {
+
+            constructor(cliente, limite){
+
+                super(cliente)
+                this.limite = limite
+                
+            }
+
+        }
+
+        class ContaPoupanca extends ContaBancaria{
+
+            constructor(cliente){
+
+                super(cliente)
+                this.aniversario = Date.now()
+
+            }
+
+        }
+
+        class Cliente{
+            constructor(nome, cpf){
+                this.nome = nome
+                this.cpf = cpf
+            }
+        }
+
+        let cliente1 = new Cliente('Marcus', 50578282828)
+
+        let marcusCorrente = new ContaCorrente(cliente1, 2000)
+
+        let marcusPoupanca = new ContaPoupanca(cliente1, 50578282828)
+
+    </script>
+</body>
+</html>

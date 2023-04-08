@@ -49,6 +49,8 @@
                 this.saldo = this.saldo - valor
             }
 
+
+
         }
 
         class ContaCorrente extends ContaBancaria {
@@ -73,18 +75,52 @@
 
         }
 
-        class Cliente{
-            constructor(nome, cpf){
+        class Cliente {
+            constructor(nome){
+                if(this.constructor === Cliente){
+                    throw Error('Cliente é uma classe abstrata')
+                }
                 this.nome = nome
-                this.cpf = cpf
             }
         }
 
-        let cliente1 = new Cliente('Marcus', 50578282828)
+        class PessoaFisica extends Cliente {
+            constructor(nome, documento){
+                super(nome, documento)
+                this.cpf = documento
+            }
+        }
+
+        class PessoaJuridica extends Cliente {
+            constructor(nome, documento){
+                super(nome)
+                this.cnpj = documento
+            }
+        }
+
+        class Transferir {
+            static execute(origem, destino, valor){
+               if(!origem instanceof ContaBancaria || !destino instanceof ContaBancaria){
+                    throw new Error('As duas contas precisam ser instâncias de ContaBancaria')
+                }
+
+                origem.sacar(valor)
+                destino.depositar(valor) 
+                
+            }
+        } // Esse método irá transferir o dinheiro da conta origem para conta destino
+
+
+        let cliente1 = new PessoaFisica('Marcus', '505.782.828-28')
+
+        let cliente2 = new PessoaJuridica('Magazine Luiza', '123.123.123/0001-01')
 
         let marcusCorrente = new ContaCorrente(cliente1, 2000)
 
         let marcusPoupanca = new ContaPoupanca(cliente1, 50578282828)
+
+        let magazineCorrente = new ContaCorrente(cliente2, 20000000)
+
 
     </script>
 </body>

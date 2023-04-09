@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let tipo = ''
+
+        const tiposPermitidos = ['mamifero', 'anfibio']
+
+        const cachorro = {
+
+            name: 'rex',
+
+            get tipo(){
+                return tipo
+            }, // Simplesmente get a informação, pega a informação e retorna... usando "cachorro.tipo" como se fosse uma propriedade comum
+            set tipo(_tipo){
+                if(tiposPermitidos.indexOf(_tipo) >= 0){
+                    tipo = _tipo
+                }
+            } // Atribui uma informação, usando o código "cachorro.tipo = 'mamifero', irá procurar no array se é permitido, caso for irá atribuir
+
+        }
+    </script>
+</body>
+</html>

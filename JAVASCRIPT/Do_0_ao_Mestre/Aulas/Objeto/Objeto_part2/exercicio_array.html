@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        /*
+            Crie um obejto pessoa
+            Deve ter uma propriedade get chama usuarios que deve armazenar uma array de strings
+            Deve ter uma propriedade get chama usuario que deve retornar o ultimo usuario da array
+            Sempre q alterar o usurio "set", não deve substituir, mas sim colocar no array, caso já não exista
+
+        */
+
+        let arr = ['1','2','3']
+
+        const pessoa = {
+
+            get usuarios(){
+                return arr
+            },
+
+            get getUsuario(){
+                if(arr.length > 0){
+                    return arr[arr.length - 1]
+                }
+                
+            },
+
+            set setUsuario(e){
+                if(arr.indexOf(e) < 0){
+                    arr.push(e)
+                } else{
+                    console.log(`A string: ${e} já existe no array "usuarios"`)
+                }
+                
+            }
+
+        }
+
+    </script>
+</body>
+</html>

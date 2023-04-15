@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // USANDO UMA PROPRIEDADE PÚBLICA, É POSSIVEL ALTERAR A PROPRIEDADE DA MANEIRA QUE QUISER DIRETAMENTE...
+        // ex: let valor1 = new Valores(); valor1.value = 89; Iria funcionar mesmo sem usar o método, que bloquearia algo que não fosse número
+        class Valores {
+            constructor(){
+                let value = 0
+                this.value = value
+            }
+
+            get mostrarValor(){
+                return this.value
+            }
+
+            set mudarNumero(v){
+                this.value = parseInt(v)
+            }
+
+
+        }
+
+        class ValoresPrivados {
+            #numb = 0
+
+            get mostrarValor(){
+                return this.#numb
+            }
+
+            set mudarNumero(v){
+                this.#numb = parseInt(v)
+            }
+
+        }
+
+        const valorPrivado = new ValoresPrivados()
+
+        //console.log(valorPrivado.#numb) // Não funciona pois é privada e só pode ser acessado pelo código interno
+        //ValoresPrivados.#numb = 80 // Não funciona pois é privada e só pode ser acessado pelo código interno
+        console.log(valorPrivado.mostrarValor) // Somente assim funciona
+        valorPrivado.mudarNumero = 80
+
+    </script>
+</body>
+</html>

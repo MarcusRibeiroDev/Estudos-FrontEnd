@@ -27,7 +27,13 @@ alunos.forEach((e)=>{
     alunosService.add(new AlunoModel(e))
 })
 
+const alunosView = new AlunosView(document.querySelector('[data-table]')) // Passando um elemento do Dom com parametro
+
+const alunosController = new AlunosController(alunosService,alunosView)
+
 /*
+
+NÃO USANDO O M.V.C
 
 // Calcula a média por materia de cada aluno e cria uma propriedade chamada media ↓
 alunos.forEach(aluno => {

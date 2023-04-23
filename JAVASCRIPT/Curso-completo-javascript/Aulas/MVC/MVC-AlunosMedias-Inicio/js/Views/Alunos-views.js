@@ -25,16 +25,21 @@ class AlunosView {
     }
 
     render(alunosArray){
+        this.tbodyDom.innerHTML = ''
+
         alunosArray.forEach((a)  => {
             const htmlBody = document.createElement('tr')
             let htmlMedias = `<td>${a.nome}</td>`
     
             this.materias.forEach((m) => {
-                htmlMedias += `<td>${a.media[m]}</td>`
+                htmlMedias += `<td>
+                ${a.media[m] !== undefined ? a.media[m] :
+                `<a href="edit.html?id=${a._id}">Incluir Nota</a>`}
+                </td>`
             })
     
             htmlBody.innerHTML = htmlMedias
-            this.theadDom.appendChild(htmlBody)
+            this.tbodyDom.appendChild(htmlBody)
         })
     }
 }

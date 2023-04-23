@@ -31,6 +31,16 @@ const alunosView = new AlunosView(document.querySelector('[data-table]')) // Pas
 
 const alunosController = new AlunosController(alunosService,alunosView)
 
+const form = document.querySelector('.form-add')
+
+form.addEventListener('submit',function(e){
+    e.preventDefault()
+
+    const nome = document.querySelector('#first_name').value
+
+    alunosController.add({nome})
+})
+
 /*
 
 NÃO USANDO O M.V.C

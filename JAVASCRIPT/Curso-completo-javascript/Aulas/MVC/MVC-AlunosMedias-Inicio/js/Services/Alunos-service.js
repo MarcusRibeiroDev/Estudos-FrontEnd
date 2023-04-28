@@ -10,4 +10,8 @@ class AlunosService{
         }
         this.alunos.push(aluno)
     }
+
+    searchById(id){
+        return this.alunos.find(aluno => aluno._id === id)
+    }
 }

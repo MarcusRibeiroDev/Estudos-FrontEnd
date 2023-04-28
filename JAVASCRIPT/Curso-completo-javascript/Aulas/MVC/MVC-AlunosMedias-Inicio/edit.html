@@ -126,8 +126,8 @@
     <!--JavaScript at end of body for optimized loading-->
     <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
     <script src="js/calc.js"></script>
-    <script src="js/Models/Aluno.model.js"></script>
-    <script src="js/Services/Alunos.service.js"></script>
+    <script src="js/Models/Aluno-model.js"></script>
+    <script src="js/Services/Alunos-service.js"></script>
 
 
     <!-- <script src="js/app.js"></script> -->
@@ -156,13 +156,17 @@
             },
         ];
 
-
-
         const alunosService = new AlunosService()
 
         alunos.forEach(aluno => {
-        alunosService.add(new AlunoModel(aluno))
-            })
+            alunosService.add(new AlunoModel(aluno))
+        })
+
+         const paramsString = window.location.search
+         const URLparams = new URLSearchParams(paramsString)
+         const idResult = parseInt(URLparams.get('id')) // Recuperar o valor do ID passado na url
+
+         alunosService.searchById(idResult) // Função que recupera o id do aluno
     </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const alunos = [
+const alunosOld = [
     {
       _id: 0,
       nome: "chico melato",
@@ -23,11 +23,14 @@ const alunos = [
 
 const alunosService = new AlunosService() // Cria um array para guardar os alunos e disponibiliza suas funções
 
-alunos.forEach((e)=>{
-    alunosService.add(new AlunoModel(e))
-})
+// alunosOld.forEach((e)=>{
+//     alunosService.add(new AlunoModel(e))
+// })
 
-const alunosView = new AlunosView(document.querySelector('[data-table]')) // Passando um elemento do Dom com parametro
+const alunosView = new AlunosView(
+    document.querySelector('[data-table]'),
+    new MateriasService().materias
+    ) // Passando um elemento do Dom com parametro
 
 const alunosController = new AlunosController(alunosService,alunosView)
 

@@ -1,9 +1,9 @@
 class AlunosView {
-    constructor(tableDom){
+    constructor(tableDom,materias){
         this.tableList = tableDom
         this.theadDom = this.tableList.querySelector('thead')
         this.tbodyDom = this.tableList.querySelector('tbody')
-        this.materias = ['portugues', 'matematica', 'historia', 'ciencias']
+        this.materias = materias
         
         this.renderHeader()
     }
@@ -30,13 +30,26 @@ class AlunosView {
         alunosArray.forEach((a)  => {
             const htmlBody = document.createElement('tr')
             let htmlMedias = `<td>${a.nome}</td>`
-    
-            this.materias.forEach((m) => {
-                htmlMedias += `<td>
-                ${a.media[m] !== undefined ? a.media[m] :
-                `<a href="edit.html?id=${a._id}">Incluir Nota</a>`}
-                </td>`
+            let founded = false
+
+            this.materias.forEach(materia => {
+                if(materia in a.notas){
+                    founded = true
+                }
             })
+
+            if(founded){
+                this.materias.forEach((m) => {
+                    htmlMedias += `<td>
+                    ${a.media[m] !== undefined ? a.media[m] :
+                    `<a href="edit.html?id=${a._id}">Incluir Nota</a>`}
+                    </td>`
+                })
+            }else{
+                htmlMedias += `<td colspan='${this.materias.length}'>
+                <a href="edit.html?id=${a._id}">Incluir Notas</a>
+                </td>`
+            }
     
             htmlBody.innerHTML = htmlMedias
             this.tbodyDom.appendChild(htmlBody)

@@ -23,9 +23,17 @@
         xhr.onreadystatechange = verificaAjax
 
         function verificaAjax(){
-            const jason = JSON.parse(xhr.responseText) // Recupera as informações em json e as transforma em objeto
-            console.log(jason)
+            if(xhr.readyState === 4){
+                if(xhr.status === 200 || xhr.status === 304){
+                    let jason = JSON.parse(xhr.responseText) // Recupera as informações em json e as transforma em objeto
+                    console.log(jason)
+                }
+                else{
+                    alert('Algo deu errado com servidor' + xhr.status)
+                }
+            }
         }
+
     </script>
 </body>
 </html>

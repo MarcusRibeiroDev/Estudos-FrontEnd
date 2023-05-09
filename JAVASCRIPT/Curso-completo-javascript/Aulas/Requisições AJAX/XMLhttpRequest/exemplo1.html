@@ -9,31 +9,10 @@
 <body>
     <h1>Teste 1</h1>
 
+    <script src="createXMLHttpRequest.js"></script>
+
     <script>
-        const xhr = new XMLHttpRequest()
-
-        /*
-            1 - Instânciar o objeto XMLHttpRequest
-            2 - Usar o método open e enviar o tipo de requisição, e depois a URL que ele irá
-        */
-
-        xhr.open('GET', "dados.json") 
-        xhr.send(null)
-
-        xhr.onreadystatechange = verificaAjax
-
-        function verificaAjax(){
-            if(xhr.readyState === 4){
-                if(xhr.status === 200 || xhr.status === 304){
-                    let jason = JSON.parse(xhr.responseText) // Recupera as informações em json e as transforma em objeto
-                    console.log(jason)
-                }
-                else{
-                    alert('Algo deu errado com servidor' + xhr.status)
-                }
-            }
-        }
-
+        createXMLHttpRequest('GET', 'dados.json', null, showJson)
     </script>
 </body>
 </html>

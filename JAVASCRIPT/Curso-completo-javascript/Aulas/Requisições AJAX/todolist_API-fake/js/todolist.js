@@ -1,70 +1,22 @@
-; (function () {
-    "use strict"
+    import {Task} from '../Model/task-model.js'
+    import {createXMLHttpRequest} from '../createXMLHttpRequest.js'
+    
+    const url= 'https://jsonplaceholder.typicode.com/users/1/todos/'
+    createXMLHttpRequest('GET', url, init)
 
-
-
-    function Task(name, completed, createdAt, updatedAt) {
-        // crie uma funcao construtora chamada Task. 
-        // essa funcao recebe por parametro obrigatório o nome da tarefa
-        // também recebe tres parametros opcionais (completed, createdAt, updatedAt)
-        // o objeto retornado por essa funcao deve ter quatro propriedades:
-        //  - name - string - obrigatório, 
-        //  - completed - boolean - opcional, false é o default, 
-        //  - createdAt - timestamp - opcional, timestamp atual é o valor default)  Date.now()
-        //  - updatedAt - timestamp - opcional, null é o valor default
-        // o objeto retornado por essa funcao deve ter um método chamado toggleDone, que deve inverter o boolean completed
-
-        if (!name) {
-            throw new Error("Task need a required parameter: name")
-        }
-        let _name = name
-        // this.name = name
-        this.completed = completed || false
-        this.createdAt = createdAt || Date.now()
-        this.updatedAt = updatedAt || null
-        this.toggleDone = function () {
-            this.completed = !this.completed
-        }
-        this.getName = () => _name
-        this.setName = function (newName) {
-            _name = newName
-            this.updatedAt = Date.now()
-            console.log("------")
-            console.log(this)
-        }
-
-
-    }
-
-    let arrTasks = [
-        {
-            name: "task 1",
-            completed: true,
-            createdAt: 1592667375012,
-            updatedAt: null
-        },
-        {
-            name: "task 2",
-            createdAt: 1581667345723,
-            updatedAt: 1592667325018
-        },
-        {
-            name: "task 3",
-            completed: true,
-            createdAt: 1592667355018,
-            updatedAt: 1593677457010
-        }
-    ]
-
-
+    let arrInstancesTasks = []
+    function init(arrTasks){
     // a partir de um array de objetos literais, crie um array contendo instancias de Tasks. 
     // Essa array deve chamar arrInstancesTasks
-    const arrInstancesTasks = arrTasks.map(task => {
-        const { name, completed, createdAt, updatedAt } = task
-        return new Task(name, completed, createdAt, updatedAt)
-    })
 
-
+    if(!arrTasks.error){
+        arrInstancesTasks = arrTasks.map(task => {
+            const { title, completed, createdAt, updatedAt } = task
+            return new Task(title, completed, createdAt, updatedAt)
+        })
+    } else {
+        return
+    }
 
     //ARMAZENAR O DOM EM VARIAVEIS
     const itemInput = document.getElementById("item-input")
@@ -91,7 +43,7 @@
         li.appendChild(checkButton)
 
         p.className = "task-name"
-        p.textContent = obj.getName()
+        p.textContent = obj.getTitle()
         li.appendChild(p)
 
         editButton.className = "fas fa-edit"
@@ -104,7 +56,7 @@
         const inputEdit = document.createElement("input")
         inputEdit.setAttribute("type", "text")
         inputEdit.className = "editInput"
-        inputEdit.value = obj.getName()
+        inputEdit.value = obj.getTitle()
 
         containerEdit.appendChild(inputEdit)
         const containerEditButton = document.createElement("button")
@@ -178,7 +130,7 @@
             },
             containerCancelButton: function () {
                 currentLi.querySelector(".editContainer").removeAttribute("style")
-                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].getName()
+                currentLi.querySelector(".editInput").value = arrInstancesTasks[currentLiIndex].getTitle()
             },
             checkButton: function () {
 
@@ -206,5 +158,4 @@
     ul.addEventListener("click", clickedUl)
 
     renderTasks()
-
-})();
+}

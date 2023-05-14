@@ -1,22 +1,20 @@
     import {Task} from '../Model/task-model.js'
     import {createXMLHttpRequest} from '../createXMLHttpRequest.js'
     
-    const url= 'https://jsonplaceholder.typicode.com/users/1/todos/'
+    const url= 'http://localhost:3000/task'
+    // const url= 'http://localhost:3000/task/1'
     createXMLHttpRequest('GET', url, init)
 
-    let arrInstancesTasks = []
     function init(arrTasks){
     // a partir de um array de objetos literais, crie um array contendo instancias de Tasks. 
     // Essa array deve chamar arrInstancesTasks
 
-    if(!arrTasks.error){
-        arrInstancesTasks = arrTasks.map(task => {
-            const { title, completed, createdAt, updatedAt } = task
-            return new Task(title, completed, createdAt, updatedAt)
-        })
-    } else {
-        return
-    }
+    if(arrTasks.error) return
+
+    const arrInstancesTasks = arrTasks.map(task => {
+        const { title, completed, createdAt, updatedAt } = task
+        return new Task(title, completed, createdAt, updatedAt)
+    })
 
     //ARMAZENAR O DOM EM VARIAVEIS
     const itemInput = document.getElementById("item-input")

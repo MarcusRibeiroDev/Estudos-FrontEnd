@@ -1,0 +1,32 @@
+{
+  "task": [
+    {
+      "title": "",
+      "completed": false,
+      "createdAt": "",
+      "updatedAt": "",
+      "userId": 1
+    },
+    {
+      "title": "",
+      "completed": true,
+      "createdAt": "",
+      "updatedAt": "",
+      "userId": 2
+    }
+  ],
+  "users": [
+    {
+      "name": "Marcus",
+      "email": "marcus-server.com"
+    },
+    {
+      "name": "Carlos",
+      "email": "carlos-server.com"
+    },
+    {
+      "name": "Sabrina",
+      "email": "sabrina-server.com"
+    }
+  ]
+}

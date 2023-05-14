@@ -1,0 +1,57 @@
+{
+    "task" : [
+
+        {
+
+            "title" : "Primeiro usuário",
+            "completed" : false,
+            "createdAt" : "",
+            "updatedAt" : "",
+            "userId" : 1
+
+        },
+
+        {
+            
+            "title" : "Segundo usuário",
+            "completed" : true,
+            "createdAt" : "",
+            "updatedAt" : "",
+            "userId" : 2
+
+        },
+
+        {
+            
+            "title" : "Terceiro Usuáio",
+            "completed" : true,
+            "createdAt" : "",
+            "updatedAt" : "",
+            "userId" : 2
+
+        }
+
+    ],
+
+    "users" : [
+
+        {
+            "name" : "Marcus",
+            "email" : "marcus-server.com",
+            "id" : 1
+        },
+
+        {
+            "name" : "Carlos",
+            "email" : "carlos-server.com",
+            "id" : 2
+        },
+
+        {
+            "name" : "Sabrina",
+            "email" : "sabrina-server.com",
+            "id" : 2
+        }
+
+    ] 
+}

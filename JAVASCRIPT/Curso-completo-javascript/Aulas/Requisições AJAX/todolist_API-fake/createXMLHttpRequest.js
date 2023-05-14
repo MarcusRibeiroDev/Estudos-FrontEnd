@@ -6,14 +6,15 @@ export function createXMLHttpRequest(method, url, cb, data = null){
     2 - Usar o método open e enviar o tipo de requisição, e depois a URL que ele irá
     */
 
-    xhr.open(method, url) 
+    xhr.open(method, url)
+    xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8")
     xhr.send(data)
 
     xhr.onreadystatechange = verificaAjax
 
     function verificaAjax(){
         if(xhr.readyState === 4){
-            if(xhr.status === 200 || xhr.status === 304){
+            if(xhr.status < 400){
                 let jason = JSON.parse(xhr.responseText) // Recupera as informações em json e as transforma em objeto
                 cb(jason)
             }
@@ -26,8 +27,4 @@ export function createXMLHttpRequest(method, url, cb, data = null){
             }
         }
     }
-}
-
-function showJson(ref){
-    console.log(ref)
 }

@@ -1,9 +1,12 @@
     import {Task} from '../Model/task-model.js'
     import {createXMLHttpRequest} from '../createXMLHttpRequest.js'
     
-    const url= 'http://localhost:3000/task'
-    // const url= 'http://localhost:3000/task/1'
-    createXMLHttpRequest('GET', url, init)
+    const urlTask= 'http://localhost:3000/task'
+    const urlUsers= 'http://localhost:3000/users'
+
+    const userId = 2
+    
+    createXMLHttpRequest('GET', `${urlUsers}/${userId}/task`, init)
 
     function init(arrTasks){
     // a partir de um array de objetos literais, crie um array contendo instancias de Tasks. 
@@ -15,6 +18,8 @@
         const { title, completed, createdAt, updatedAt } = task
         return new Task(title, completed, createdAt, updatedAt)
     })
+
+    console.log(arrInstancesTasks)
 
     //ARMAZENAR O DOM EM VARIAVEIS
     const itemInput = document.getElementById("item-input")
@@ -87,9 +92,16 @@
     }
 
     function addTask(taskName) {
-        // adicione uma nova instancia de Task
-        arrInstancesTasks.push(new Task(taskName))
-        renderTasks()
+
+        const cb = function({title}){
+            // adicione uma nova instancia de Task
+            arrInstancesTasks.push(new Task(title))
+            renderTasks()
+        }
+
+        const taskJason = JSON.stringify({title: taskName, userId})
+
+        createXMLHttpRequest('POST', urlTask, cb, taskJason)
 
     }
 

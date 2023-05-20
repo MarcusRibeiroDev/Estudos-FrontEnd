@@ -69,7 +69,7 @@ myPromisse3.then((data) => {
 }) //  Caso a função then retorne um erro, a função catch irá dar alguma ação útil ao erro
 
 
-// Muitas promises sendo executadas juntas
+// Muitas promises sendo executadas juntas usando ALL
 
 const p1 = new Promise((resolve, reject) => {
 
@@ -90,3 +90,43 @@ const p3 = new Promise((resolve, reject) => {
 const resolveAll = Promise.all(([p1, p2, p3])).then((data) => {
     console.log(data)
 }) // Usando esse método da class Promise é possível mandar um array de promises e fazer a verificação de todos...
+
+// Usando o Race que irá retornar quem for executado primeiro
+
+const p4 = new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+        resolve("P4 executado com sucesso...")
+    }, 2000)
+    
+})
+
+const p5 = new Promise((resolve, reject) => {
+    resolve("P5 executado com sucesso...")
+})
+
+const p6 = new Promise((resolve, reject) => {
+    resolve("P6 executado com sucesso...")
+})
+
+const resolveRace = Promise.race(([p4, p5, p6])).then((data) => {
+    console.log(data)
+})
+
+// Usando o fetch com promisses
+
+const userName = "MarcusRibeiroDev"
+
+fetch(`https://api.github.com/users/${userName}`, {
+    method: "GET",
+    headers: {
+        Accept: "application/vnd.github.v3=json",
+    },
+}).then((response => {
+    console.log(response)
+    return response.json()
+})).then((data) => {
+    console.log(data)
+    console.log(`O nome inteiro do dono da conta ${userName}, é ${data.name}`)
+})
+

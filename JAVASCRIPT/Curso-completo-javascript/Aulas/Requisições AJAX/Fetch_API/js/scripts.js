@@ -8,7 +8,10 @@ const postsContainer = document.querySelector("#posts-container")
 // Variáveis do post.html
 const postPage = document.querySelector("#post")
 const postContainer = document.querySelector("#post-container")
-const commentsContainer = document.querySelector("comments-container")
+const commentsContainer = document.querySelector("#comments-container")
+const commentForm = document.querySelector("#comment-form")
+const emailInput = document.querySelector("#email")
+const commentInput = document.querySelector("#body")
 
 // Pegar o id do post clicado
 const uidParams = new URLSearchParams(window.location.search)
@@ -19,9 +22,37 @@ const userId = uidParams.get("id")
 if(!userId){
     getAllPosts()
 } else{
-    console.log(`Voce está no post ${userId}`)
     getPost(userId)
+
+    // Adicionando o evento de submit no formulário
+
+    commentForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+
+        let structureComment = {
+            email: emailInput.value,
+            body: commentInput.value
+        }
+
+        const commentJSON = JSON.stringify(structureComment)
+
+        postComment(commentJSON)
+    })
 }
+
+async function postComment(comment){
+    const response = await fetch(`${url}/${userId}/comments`, {
+        method: "POST",
+        body: comment,
+        headers: {
+            "Content-type": "application/json",
+        },
+    })
+
+    const data = await response.json()
+
+    createComments(data)
+} // Função usando POST para enviar comentário
 
 //  Pegar todos os posts
 async function getAllPosts(){
@@ -66,7 +97,37 @@ async function getPost(id){
 
     postPage.classList.remove("hide")
 
+    const title = document.createElement('h1')
+
+    const body = document.createElement('p')
+
+    title.innerHTML = responsePostObj.title
+
+    body.innerHTML = responsePostObj.body
+
+    postContainer.appendChild(title)
+    postContainer.appendChild(body)
+
+    responseCommentsObj.map((comment) => {
+        createComments(comment)
+    })
+
 }
+
+function createComments(c) {
+
+    const div = document.createElement('div')
+    const email = document.createElement('h3')
+    const body = document.createElement('p')
+
+    email.innerHTML = c.email
+    body.innerHTML = c.body
+
+    div.appendChild(email)
+    div.appendChild(body)
+
+    commentsContainer.appendChild(div)
+} // Função criada paga gerar comentário 
 
 
 

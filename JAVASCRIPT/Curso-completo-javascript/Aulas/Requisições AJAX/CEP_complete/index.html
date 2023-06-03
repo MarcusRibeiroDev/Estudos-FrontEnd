@@ -12,8 +12,7 @@
 <body>
 
 
-  <div id="bs-feedback" class="alert alert-warning alert-dismissible" role="alert">
-
+  <div id="bs-feedback" class="alert alert-warning alert-dismissible" role="alert" style="transform: translateY(-100%);">
     <span class="content"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
   </div>
@@ -63,41 +62,87 @@
 
 <script>
 
-const inputCEP = document.querySelector("#inputCEP");
-const street = document.querySelector("#inputNumero");
-const neighboorhood = document.querySelector("inputBairro");
-const city = document.querySelector("#inputCidade");
-const state = document.querySelector("#inputEstado");
+  const inputCEP = document.querySelector("#inputCEP");
+  const street = document.querySelector("#inputLogradouro");
+  const neighboorhood = document.querySelector("#inputBairro");
+  const city = document.querySelector("#inputCidade");
+  const state = document.querySelector("#inputEstado");
+  const modalError = document.querySelector("#bs-feedback")
+  const formMain = document.querySelector("form")
+  const inputs = document.querySelectorAll("input")
 
-inputCEP.addEventListener("keyup", () => {
-  const input = inputCEP.value;
-  const amount = input.length;
+  inputCEP.addEventListener("keyup", () => {
+    const amount = inputCEP.value.length;
 
-  toggleDisabled();
+    if (amount === 8) {
 
-  if (amount === 8) {
-    getData();
+      getData()
+
+    }
+    
+    if(amount > 8){
+      toggleDisabled()
+    }
+
+  });
+
+  async function getData() {
+
+    try {
+
+      const url = `https://viacep.com.br/ws/${inputCEP.value}/json/`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (!data.erro) {
+
+        street.value = data.logradouro;
+        neighboorhood.value = data.bairro;
+        city.value = data.localidade;
+        state.value = data.uf;
+        console.log(data)
+
+      } else {
+
+        throw new Error("CEP inválido")
+
+      }
+
+    } catch (err) {
+
+      modalError.querySelector("span").innerText = err.message
+      modalError.style.transform = "translateY(0px)"
+      formMain.reset()
+      inputs.forEach((input)=>{
+
+        input.disabled = true
+        
+      })
+
+      modalError.querySelector("button").addEventListener("click", showModal)
+
+    }
   }
-});
 
-async function getData() {
-  try {
-    const url = `https://viacep.com.br/ws/${inputCEP.value}/json/`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error("Ocorreu um erro na requisição:", error);
+  function showModal(){
+
+    modalError.style.transform = "translateY(-100%)"
+
+    inputs.forEach((input)=>{
+      input.disabled = false
+    })
+
+    modalError.querySelector("button").removeEventListener("click", showModal)
+
   }
-}
 
-// Continuar tratamento de erros e colocar os valores nos inputs
-
-function toggleDisabled() {
-  if (inputCEP.value.length > 8) {
-    inputCEP.value = inputCEP.value.slice(0, 8);
+  function toggleDisabled() {
+    if (inputCEP.value.length > 8) {
+      inputCEP.value = inputCEP.value.slice(0, 8);
+    }
   }
-}
+
+
 
 </script>
 

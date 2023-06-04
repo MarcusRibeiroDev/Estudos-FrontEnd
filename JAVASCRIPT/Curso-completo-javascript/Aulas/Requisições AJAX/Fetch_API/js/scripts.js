@@ -26,8 +26,8 @@ if(!userId){
 
     // Adicionando o evento de submit no formulário
 
-    commentForm.addEventListener("submit", (e) => {
-        e.preventDefault()
+    commentForm.addEventListener("submit", (event) => {
+        event.preventDefault()
 
         let structureComment = {
             email: emailInput.value,

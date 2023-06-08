@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Métodos estáticos só podem ser utilizados apartir do construtor original e não das instâncias
+
+        class FuncaoMatematica{
+
+            constructor(valor1,valor2){
+                this.valor1 = valor1
+                this.valor2 = valor2
+            }
+
+            static somar(valor1,valor2){
+                console.log(`A soma é ${valor1 + valor2}`)
+            }
+
+            static subtrair(valor1,valor2){
+                console.log(`A subtração é ${valor1 - valor2}`)
+            }
+
+        }
+
+    </script>
+</body>
+</html>

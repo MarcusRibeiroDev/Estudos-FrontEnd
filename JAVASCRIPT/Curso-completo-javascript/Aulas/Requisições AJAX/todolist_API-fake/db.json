@@ -1,0 +1,82 @@
+{
+  "task": [
+    {
+      "title": "Tarefa do Marcus",
+      "completed": false,
+      "createdAt": "",
+      "updatedAt": "",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "Tarefa do Carlos",
+      "completed": true,
+      "createdAt": "",
+      "updatedAt": "",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "title": "Tarefa da Sabrina",
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "title": "Tarefa da Anônimo",
+      "userId": 4,
+      "id": 4
+    },
+    {
+      "title": "sssssssss",
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "title": "sss",
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "title": "8888",
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "title": "sssssssss777",
+      "userId": 2,
+      "id": 8
+    },
+    {
+      "title": "xcc",
+      "userId": 2,
+      "id": 9
+    },
+    {
+      "title": "xcc",
+      "userId": 2,
+      "id": 10
+    }
+  ],
+  "users": [
+    {
+      "name": "Marcus",
+      "email": "marcus-server.com",
+      "id": 1
+    },
+    {
+      "name": "Carlos",
+      "email": "carlos-server.com",
+      "id": 2
+    },
+    {
+      "name": "Sabrina",
+      "email": "sabrina-server.com",
+      "id": 3
+    },
+    {
+      "name": "Anônimo",
+      "email": "anônimo-server.com",
+      "id": 4
+    }
+  ]
+}

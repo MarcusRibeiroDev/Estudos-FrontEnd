@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Curso Javascript Completo</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+</head>
+
+<body>
+
+
+  <div id="bs-feedback" class="alert alert-warning alert-dismissible" role="alert" style="transform: translateY(-100%);">
+    <span class="content"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">X</button>
+  </div>
+
+  <div class="container">
+    <h1>Digite um CEP</h1>
+
+    <form>
+      <div class="form-group">
+        <label class="control-label" for="inputCEP">CEP</label>
+        <div class="controls">
+          <input class="form-control" type="text" id="inputCEP" placeholder="xxxxx-xxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="inputLogradouro">Logradouro</label>
+        <div class="controls">
+          <input class="form-control" type="text" id="inputLogradouro" placeholder="Logradouro">
+          <input class="form-control" type="number" id="inputNumero" placeholder="Numero">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="inputBairro">Bairro</label>
+        <div class="controls">
+          <input class="form-control" type="text" id="inputBairro" placeholder="Bairro">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="inputCidade">Cidade</label>
+        <div class="controls">
+          <input class="form-control" type="text" id="inputCidade" placeholder="Cidade">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="inputEstado">Estado</label>
+        <div class="controls">
+          <input class="form-control" type="text" id="inputEstado" placeholder="Estado">
+        </div>
+      </div>
+
+    </form>
+  </div>
+</body>
+
+<script>
+
+  const inputCEP = document.querySelector("#inputCEP");
+  const street = document.querySelector("#inputLogradouro");
+  const neighboorhood = document.querySelector("#inputBairro");
+  const city = document.querySelector("#inputCidade");
+  const state = document.querySelector("#inputEstado");
+  const modalError = document.querySelector("#bs-feedback")
+  const formMain = document.querySelector("form")
+  const inputs = document.querySelectorAll("input")
+
+  inputCEP.addEventListener("keyup", () => {
+    const amount = inputCEP.value.length;
+
+    if (amount === 8) {
+
+      getData()
+
+    }
+    
+    if(amount > 8){
+      toggleDisabled()
+    }
+
+  });
+
+  async function getData() {
+
+    try {
+
+      const url = `https://viacep.com.br/ws/${inputCEP.value}/json/`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (!data.erro) {
+
+        street.value = data.logradouro;
+        neighboorhood.value = data.bairro;
+        city.value = data.localidade;
+        state.value = data.uf;
+        console.log(data)
+
+      } else {
+
+        throw new Error("CEP inválido")
+
+      }
+
+    } catch (err) {
+
+      modalError.querySelector("span").innerText = err.message
+      modalError.style.transform = "translateY(0px)"
+      formMain.reset()
+      inputs.forEach((input)=>{
+
+        input.disabled = true
+        
+      })
+
+      modalError.querySelector("button").addEventListener("click", showModal)
+
+    }
+  }
+
+  function showModal(){
+
+    modalError.style.transform = "translateY(-100%)"
+
+    inputs.forEach((input)=>{
+      input.disabled = false
+    })
+
+    modalError.querySelector("button").removeEventListener("click", showModal)
+
+  }
+
+  function toggleDisabled() {
+    if (inputCEP.value.length > 8) {
+      inputCEP.value = inputCEP.value.slice(0, 8);
+    }
+  }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /*let n1 = parseFloat(prompt('Digite um número'));
+        console.log('Tabuada de 1 a 10');
+        
+        for(let n = 1; n <= 100; n++){
+            console.log(n1*n);
+        }*/
+
+        let n1 = parseFloat(prompt('Digite um número'));
+        let f1 = parseFloat(prompt('Você deseja a tabuada do 1 ao...?'));
+
+        for(let n = 1; n <= f1; n++){
+            let resultado = (n1 * n);
+            document.write(`${n1} x ${n} = ${resultado}`+'<br><br>');
+
+            if(n % 10 === 0 && n != 0){
+                document.write('<hr>');
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

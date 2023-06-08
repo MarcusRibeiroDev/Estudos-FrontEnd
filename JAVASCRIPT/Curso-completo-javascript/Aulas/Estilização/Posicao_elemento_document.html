@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: blueviolet; height: 100px; width: 100px;"></div>
+
+    <script>
+        const div = document.querySelector('div')
+
+        console.log(div.offsetHeight) // Altura do elemento no DOM, desconsiderando o CSS
+        console.log(div.offsetWidth) // Largura do elemento no DOM, desconsiderando o CSS
+        console.log(div.offsetTop) // Distância do topo da página, desconsiderando o CSS
+        console.log(div.offsetLeft) // DIstância do lado esquerdo da página, desconsiderando o CSS
+
+    </script>
+</body>
+</html>

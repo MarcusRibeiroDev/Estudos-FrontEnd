@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: #ccc;
+            padding: 10px;
+        }
+        p{
+            border: solid red 1px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus quidem numquam eos soluta ipsa amet recusandae</p>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container')
+        const insertAdjacentElement = document.createElement('p')
+        insertAdjacentElement.textContent = 'insertAdjacentElement' 
+
+        // beforebegin, afterbegin, beforeend, afterend = COLOCAR REFERÊNCIA
+
+        container.insertAdjacentHTML("beforebegin",'<h3>insertAdjacentHTML - beforebegin</h3>') // ADICIONA ELEMENTO HTML
+        container.insertAdjacentHTML("afterbegin",'<h2>insertAdjacentHTML - afterbegin</h2>') // ADICIONA ELEMENTO HTML
+        container.insertAdjacentText('beforeend','insertAdjacentText') // ADICIONA TEXTO
+        container.insertAdjacentElement('afterend',insertAdjacentElement) // ADICIONA NÓ
+    </script>
+</body>
+</html>

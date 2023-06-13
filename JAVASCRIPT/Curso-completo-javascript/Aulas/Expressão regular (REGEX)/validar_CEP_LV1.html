@@ -7,8 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <script>
 
+        const regex = /^[\d]{5}-[\d]{3}$/
 
-    <script src="./scripts.js"></script>
+        const isValid = (cep) => {
+            console.log(regex.test(cep))
+        }
+
+        isValid("12345-000")
+
+        isValid("12345-00")
+
+    </script>
+
 </body>
 </html>

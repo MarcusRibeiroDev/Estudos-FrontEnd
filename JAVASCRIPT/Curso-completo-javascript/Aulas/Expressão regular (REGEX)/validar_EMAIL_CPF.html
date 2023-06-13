@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text">
+    <button type="submit" disabled>OK</button>
+
+    <script>
+
+        const emailRegex = /^[\da-z\.\-_]+@[\a-z]+\.[\a-z]+$/
+        const cpfRegex = /^[\d]{3}\.[\d]{3}\.[\d]{3}\-[\d]{2}$/
+
+        const el = document.querySelector("input")
+        const button = document.querySelector("button")
+
+        function isValidEmail(email){
+            return emailRegex.test(email)
+        }
+
+        function isValidCpf(cpf){
+            return cpfRegex.test(cpf)
+        }
+
+        el.addEventListener("keyup", (e)=>{
+
+            if(isValidEmail(e.target.value) || isValidCpf(e.target.value)){
+                button.disabled = false
+            } else {
+                button.disabled = true
+            }
+
+        })
+
+    </script>
+
+</body>
+</html>

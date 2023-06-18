@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Curso Javascript Completo </title>
+    <meta charset="utf-8">
+
+    <style>
+        .hgt {
+            font-weight: normal;
+            color: white;
+            background-color: rgb(99, 0, 0);
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Curso Javascript Completo</h1>
+
+    <input type="text" name="">
+    <p>1 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud <b>exercitation ullamco laboris</b> nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quis qui, numquam eius porro corrupti laborum
+        delectus perspiciatis repudiandae ullam.</p>
+    <p>3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, quas?</p>
+
+
+</body>
+
+<script>
+
+    const valueInput = document.querySelector("input")
+
+    const pText = [...document.querySelectorAll("p")]
+
+    // Armazenar o conteúdo original dos parágrafos em uma variável separada
+    const originalContent = pText.map(p => p.innerHTML);
+
+    function restoreOriginalText() {
+        pText.forEach((p, i) => {
+            p.innerHTML = originalContent[i];
+        });
+    }
+
+    function createRegex(value) {
+        let regex = new RegExp(value, "gi");
+
+        pText.forEach((p, i) => {
+            p.innerHTML = originalContent[i].replaceAll(regex, (data) => {
+                return `<span class="hgt">${data}</span>`;
+            });
+        });
+    }
+
+    valueInput.addEventListener("input", (e) => {
+        if (e.target.value.length > 0) {
+            createRegex(e.target.value);
+        } else {
+            restoreOriginalText();
+        }
+    });
+
+</script>
+
+</html>

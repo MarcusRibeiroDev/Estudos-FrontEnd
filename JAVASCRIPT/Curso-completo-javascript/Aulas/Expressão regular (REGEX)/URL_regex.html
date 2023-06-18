@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        const url = "https://www.google.com.br/search?user=daniel&id=1&q=regex"
+
+        const regex = /[?&](\w+)=(\w*)/g
+
+        let found;
+
+        const obj = {}
+
+        while(found = regex.exec(url)){
+            console.log(found)
+            obj[found[1]] = found[2] // Montando o objeto
+        }
+
+        console.log(obj)
+
+    </script>
+
+</body>
+</html>

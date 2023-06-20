@@ -6,4 +6,10 @@ console.log(arr1.toString())
 
 console.log(arr2.join(' & '))
 
-console.log(arr1.concat(arr2))
+const concatenado = arr1.concat(arr2)
+
+console.log(concatenado)
+
+console.log(concatenado.reduce((ac, el)=>{
+    return ac + el
+}))

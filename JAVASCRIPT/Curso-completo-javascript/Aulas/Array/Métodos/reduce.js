@@ -1,7 +1,9 @@
 let arr = [1,2,3,4]
 
 let soma =  arr.reduce(function(acumulador, elementoAtual){
-    return acumulador + elementoAtual
+    console.log(acumulador)
+    console.log(elementoAtual)
+    return acumulador += elementoAtual
 }, ) // Loop dentro do array, 1º parâmetro é uma função, 2º parâmetro é o tipo de acumulador, assim irá decidir o tipo de retorno
 
 //console.log(soma)

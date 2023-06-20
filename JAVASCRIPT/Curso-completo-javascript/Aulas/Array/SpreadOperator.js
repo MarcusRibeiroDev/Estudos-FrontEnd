@@ -1,4 +1,4 @@
-const arr = [1,2,3]
+let arr = [1,2,3]
 let _arr = [4,5,6]
 
 function mostrar(){

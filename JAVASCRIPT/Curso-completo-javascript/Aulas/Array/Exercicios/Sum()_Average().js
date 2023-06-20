@@ -10,7 +10,7 @@ function sum(){
     console.log(`A soma é: ${total}`)
 }
 
-sum(5,5,10)
+sum(5,45,10)
 
 function average(){
     const numbers = Array.from(arguments) // CRIA UM ARRAY COM BASE O USUÁRIO COLOCA PARÂMETROS NA FUNÇÃO

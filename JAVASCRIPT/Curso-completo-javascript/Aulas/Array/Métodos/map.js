@@ -7,3 +7,5 @@ const arr1 = arr.map(function(el,i,_arr){
 
 console.log(arr1)
 
+console.log(arr)
+

@@ -13,9 +13,15 @@
 
         while(ano <= anoAtual){
             ano += 4;
+
             if(ano === 1942 || ano === 1946){
                 continue;
             } // Por conta da segunda guerra mundial essas copas não foram realizadas...
+
+            if(ano > anoAtual){
+                break
+            }
+
             copas.push(ano);
             document.write(`Copa de ${ano}`+'<br><br>');
         }

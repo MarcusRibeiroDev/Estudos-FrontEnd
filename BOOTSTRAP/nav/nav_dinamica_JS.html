@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"
+    >
+</head>
+<style>
+    .palmeiras{
+        background-color: chartreuse;
+    }
+
+    .corinthians{
+        background-color: darkgrey;
+    }
+
+    .flamengo{
+        background-color: red;
+    }
+</style>
+<body>
+    
+    <nav>
+        <ul class="nav nav-justified nav-pills">
+            <li id="palmeiras" class="nav-item active">Palmeiras</li>
+
+            <li id="corinthians" class="nav-item dropdown">Corinthians</li>
+
+            <li id="flamengo" class="nav-item">Flamengo</li>
+        </ul>
+    </nav>
+
+    <div class="d-flex justify-content-center align-items-center" id="banner" style="height: 100vh; width: 100vw; background-color: white;">
+        <img id="palmeiras-imagem" src="https://yt3.googleusercontent.com/MY71to20njgXGfwumcVu6JbvIp72VBbUIPi7zV0qTDuBBmo0hl7DYS3KR-xHYXxRrJuwOHen=s900-c-k-c0x00ffffff-no-rj" style="height: 400px; display: none;" alt="">
+        <img id="corinthians-imagem" src="https://i.pinimg.com/originals/e8/1e/0b/e81e0bcf99242191d4dd7a89758615da.jpg" style="height: 400px;  display: none;" alt="">
+        <img id="flamengo-imagem" src="https://static-wp-tor15-prd.torcedores.com/wp-content/uploads/2016/07/FLAMENGO1.png" style="height: 400px;  display: none;" alt="">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    </script>
+
+    <script>
+
+        const palmeiras = document.querySelector("#palmeiras")
+        const corinthians = document.querySelector("#corinthians")
+        const flamengo = document.querySelector("#flamengo")
+        let banner = document.querySelector("#banner")
+
+        const palmeirasI = document.querySelector("#palmeiras-imagem")
+        const corinthiansI = document.querySelector("#corinthians-imagem")
+        const flamengoI = document.querySelector("#flamengo-imagem")
+
+        palmeiras.addEventListener("click",()=>{
+            banner.setAttribute("style", "background: chartreuse; height: 100vh; width: 100vw;")
+
+            palmeiras.classList.add("palmeiras")
+            corinthians.classList.remove("corinthians")
+            flamengo.classList.remove("flamengo")
+
+            palmeirasI.style.display = "block"
+            corinthiansI.style.display = "none"
+            flamengoI.style.display = "none"
+        })
+
+        corinthians.addEventListener("click",()=>{
+            banner.setAttribute("style", "background: darkgrey; height: 100vh; width: 100vw;")
+
+            corinthians.classList.add("corinthians")
+            palmeiras.classList.remove("palmeiras")
+            flamengo.classList.remove("flamengo")
+
+            corinthiansI.style.display = "block"
+            palmeirasI.style.display = "none"
+            flamengoI.style.display = "none"
+        })
+
+        flamengo.addEventListener("click",()=>{
+            banner.setAttribute("style", "background: red; height: 100vh; width: 100vw;")
+
+            flamengo.classList.add("flamengo")
+            corinthians.classList.remove("corinthians")
+            palmeiras.classList.remove("palmeiras")
+
+            flamengoI.style.display = "block"
+            corinthiansI.style.display = "none"
+            palmeirasI.style.display = "none"
+        })
+
+    </script>
+
+</body>
+</html>

@@ -10,4 +10,4 @@ const intervalFunction = setInterval(() => {
     if(n > 5){
         clearInterval(intervalFunction) // Irá parar a repetição
     }
-}, 2000); // Irá ativar a cada 5 seg
+}, 2000); // Irá ativar a cada 2 seg

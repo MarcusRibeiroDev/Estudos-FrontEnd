@@ -1,0 +1,13 @@
+Criar projeto React - VITE
+
+1 - npm create vite@latest
+
+2 - Adicionar nome do projeto.
+
+3 - Selecionar o Framework.
+
+4 - Selecionar a Linguagem.
+
+5 - Seguir as instruções do terminal.
+
+6 - Para ativar um projeto sempre usar npm run dev

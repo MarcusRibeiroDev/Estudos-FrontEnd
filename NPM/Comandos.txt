@@ -1,0 +1,9 @@
+Para inicializar o npm em um projeto = npm init
+
+Para inicializar o npm em um projeto de maneira mais ágil = npm init -y
+
+Para instalar pacotes usa-se npm install react/next  
+
+Para instalar pacotes usados somente para desenvolvimento usa-se npm install typescript -D
+
+Para remover pacotes usa-se npm remove react

@@ -1,4 +1,5 @@
 import FirstComponent from './FirstComponents'
+import TemplateEx from './TemplateExpressions'
 
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -9,8 +10,8 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
       <div>
+        <div>
         <a href="https://vitejs.dev" rel='noreferrer'>
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -31,7 +32,8 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <FirstComponent/>
-    </>
+      <TemplateEx/>
+    </div>
   )
 }
 

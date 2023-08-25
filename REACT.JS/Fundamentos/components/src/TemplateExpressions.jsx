@@ -9,7 +9,6 @@ const TemplateEx = () =>{
             <h1>Olá {name} como vai?</h1>
             <p>Você tem {age} anos</p>
             <p>E você é um {job}</p>
-            {console.log("Olá mundo!")}
         </div>
     )
 }

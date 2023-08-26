@@ -5,8 +5,8 @@ import './App.css'
 import Tropical from './assets/praia-tropical.jpg'
 
 //
-
 import ManageData from './components/ManageData'
+import List from './components/List'
 
 function App() {
 
@@ -26,6 +26,8 @@ function App() {
       </div>
 
       <ManageData />
+
+      <List />
 
     </div>
   )

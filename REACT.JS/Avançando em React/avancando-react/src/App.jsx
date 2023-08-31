@@ -11,6 +11,11 @@ import ConditionalSimple from './components/ConditionalSimple'
 import Props from './components/Props'
 import Container from './components/Container'
 import ExecuteFunction from './components/ExecuteFunction'
+import { useState } from 'react'
+import Message from './components/Message'
+import ChangeMesssage from './components/ChangeMesssage'
+import UserDetails from './components/UserDetails'
+
 
 function App() {
 
@@ -25,6 +30,25 @@ function App() {
   const showContentConsole = ()=>{
     console.log("Obrigado pelo Like")
   }
+
+  // Criando e modificando mensagem
+
+  const [message, setMessage] = useState("")
+
+  const handleMessage = (msg) =>{
+    setMessage(msg)
+  }
+
+  // Challenge
+
+  const peopleDrivers = [
+    {userN: "Marcus", userA: 18, code: 6},
+    {userN: "Carlos", userA: 15, code: 3},
+    {userN: "Sabrina", userA: 19, code: 8},
+    {userN: "Orácio", userA: 40, code: 7},
+    {userN: "Amanda", userA: 34, code: 9},
+  ]
+
 
   return (
 
@@ -61,9 +85,20 @@ function App() {
       <Container stringSet={"Atributo"}>
         <p>Elemento Children 1</p>
       </Container>
+      <hr />
       {/*Function*/}
       <h2>Clique no like se gostou!</h2>
+      <hr />
       <ExecuteFunction functionComponent={showContentConsole}/>
+      {/*Message Create*/}
+      <hr />
+      <Message msg={message} />
+      <ChangeMesssage changeMesssage={handleMessage} />
+      <hr />
+      {/*Challenge*/}
+      {peopleDrivers.map((driver)=>(
+        <UserDetails userN={driver.userN} userA={driver.userA} key={driver.code}/>
+      ))}
     </>
   )
 

@@ -1,0 +1,12 @@
+.li-cardetails {
+    color: black;
+    font-size: 3em;
+}
+
+.ul-cardetails{
+    background-color: wheat;
+    border: 2px solid black;
+    margin: 2em;
+    list-style-type: none;
+    display: inline-block;
+}

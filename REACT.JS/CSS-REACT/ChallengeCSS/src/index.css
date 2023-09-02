@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+li {
+  font-size: 2em;
+  color: grey;
+}
+
+h1 {
+  color: blue;
+  font-size: 4em;
+}

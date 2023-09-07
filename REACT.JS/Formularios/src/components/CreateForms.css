@@ -1,0 +1,10 @@
+form {
+    width: 500px;
+    background-color: wheat;
+    padding: 2em;
+}
+
+input, select, textarea {
+    display: block;
+    margin-top: 0.5em;
+}

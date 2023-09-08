@@ -7,7 +7,7 @@ function App() {
     <>
       {/*Criando Forms*/}
       <h1>Form</h1>
-      <CreateForms />
+      <CreateForms user={{name: "Marcus", email: "marcus.me.95@gmail.com", tel:1195656559, cupom: 5656599}}/>
     </>
   )
 }

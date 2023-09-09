@@ -11,11 +11,18 @@ const CreateForms = ({user}) => {
         setTelInput(event.target.value)
     }
 
+    const [bio, setBio] = useState("")
+
     const handleSubmit = (e)=>{
         e.preventDefault()
-        console.log("Dados Enviados ao servidor")
-        let inputs = document.querySelectorAll('input')
-        Array.from(inputs).map((inp)=>(inp.value = ""))
+        console.log(`
+        **Dados Enviados ao servidor**
+
+        Telefone: ${telInput}
+        Cupom: ${cupomInput}
+
+        Bio: ${bio}
+        `)
     }
 
     const [cupomInput, setCupom] = useState(user.cupom ? user.cupom : "")
@@ -49,7 +56,20 @@ const CreateForms = ({user}) => {
                 <span>Cupom:</span>
                 <input value={user.cupom} type="text" name="cupom" placeholder="Digite seu cupom..." onChange={(e)=>{setCupom(e.target.value); console.log(cupomInput)}} />
             </label>
-
+            {/*Textarea*/}
+            <label>
+                <span>Bio:</span>
+                <textarea name="bio" id="" placeholder="Digite a bio aqui" onChange={(e)=>{setBio(e.target.value)}} value={bio}></textarea>
+            </label>
+            {/*Select*/}
+            <label>
+                <span>Função:</span>
+                <select name="function" id="">
+                    <option value="Front">Front</option>
+                    <option value="Back">Back</option>
+                    <option value="UX UI">UX UI</option>
+                </select>
+            </label>
         </form>
     </div>
   )

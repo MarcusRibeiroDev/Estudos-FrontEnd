@@ -1,0 +1,11 @@
+.form-MyForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    background-color: coral;
+}
+
+span{
+    display: block;
+}

@@ -1,0 +1,12 @@
+.color1 {color: #ecc651;}
+.color2 {color: #e7d66b;}
+.color3 {color: #123869;}
+.color4 {color: #126977;}
+.color5 {color: #17a78e;}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

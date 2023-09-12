@@ -1,4 +1,4 @@
-const wordsList = {
+export const wordsList = {
     fruta: [
       "Abacaxi", "Melancia", "Banana", "Maçã", "Pêra", 
       "Mamão", "Laranja", "Limão", "Morango", "Uva"
@@ -104,5 +104,3 @@ const wordsList = {
       "Liquid"
     ]
 } 
-
-export default wordsList

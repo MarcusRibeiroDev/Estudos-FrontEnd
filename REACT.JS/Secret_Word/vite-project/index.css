@@ -16,6 +16,9 @@ body {
     background: rgb(18,56,105);
     background: linear-gradient(90deg, rgba(18,56,105,1) 33%, rgba(18,105,119,1) 63%, rgba(23,167,142,1) 100%);
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {

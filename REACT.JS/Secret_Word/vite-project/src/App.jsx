@@ -14,18 +14,27 @@ import { useCallback, useEffect, useState } from 'react'
 
 function App() {
 
+  // Estágios da aplicação
   const stages = [
     {id: 1, stage: 'start'},
     {id: 2, stage: 'game'},
     {id: 3, stage: 'end-game'}
   ]
 
-  const [gameStage, setGameStage] = useState(stages[0].stage)
-
-  const [words] = useState(wordsList)
-
   // Começar o game
   const startGame = ()=> {
+    const [categoryRandom, wordRandom] = processWordAndCategory()
+
+    const lettersCount = wordRandom.split('')
+
+    console.log(categoryRandom)
+    console.log(wordRandom)
+    console.log(lettersCount)
+
+    setCategory(categoryRandom)
+    setWord(wordRandom)
+    setLetters(lettersCount)
+
     setGameStage(stages[1].stage)
   }
 
@@ -37,6 +46,27 @@ function App() {
   // Finalizar e reiniciar game
   const retryGame = ()=> {
     setGameStage(stages[0].stage)
+  }
+
+  const [gameStage, setGameStage] = useState(stages[0].stage)
+
+  // Palavras aleatórias
+  const [wordsListGame] = useState(wordsList)
+
+  // Selecionando categorias, palavras e letras
+  const [category, setCategory] = useState('')
+  const [word, setWord] = useState('')
+  const [letters, setLetters] = useState('')
+
+  // Setando categorias, palavras e letras
+  const processWordAndCategory = ()=> {
+    const categories = Object.keys(wordsListGame) 
+    const categoryRandom = categories[Math.floor(Math.random() * categories.length)]
+
+    const wordsOfCategory = wordsListGame[categoryRandom]
+    const wordRandom = wordsOfCategory[Math.floor(Math.random() * wordsOfCategory.length)].toLowerCase()
+
+    return [categoryRandom, wordRandom]
   }
 
   return (

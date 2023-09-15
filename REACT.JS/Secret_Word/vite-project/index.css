@@ -33,3 +33,7 @@ button {
 button:hover {
     background-color: #126977;
 }
+
+h1 {
+    font-size: 5rem;
+}

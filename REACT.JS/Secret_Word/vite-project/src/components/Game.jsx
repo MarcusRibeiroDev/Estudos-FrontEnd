@@ -1,30 +1,46 @@
 import './Game.css'
 import PropTypes from "prop-types";
 
-const Game = ({processWord}) => {
+const Game = ({
+    processWord,
+    category,
+    word,
+    letters,
+    score,
+    wrongsLetters,
+    attempts,
+    guessedLetters
+}) => {
   return (
     <div className='game'>
 
         <div className='score'>
-            <h2>Pontuação: <span>000</span> </h2>
+            <h2>Score: {score}</h2>
         </div>
 
         <h1>Adivinhe a Palavra:</h1>
 
         <div className='tips'>
-            <h2>Dica sobre a palavra:</h2>
-            <span>Category</span>
+            <h2>Dica: <span>{category}</span></h2>
         </div>
+
+        <p>Tentativas: {attempts}</p>
 
         <div className='game-container-word'>
             <div className='word-container'>
-                <span className='letter'>A</span>
-                <span className='white-canvas'></span>
+                {
+                    letters.map((l, i)=> (
+
+                        guessedLetters.includes(l) ?
+                        (<span className='letter' key={i}>{l}</span>) : (<span className='white-canvas' key={i}></span>)
+
+                    ))
+                }
             </div>
         </div>
 
         <div className='input-letter'>
-            <h2>Tente adivinhar a letra</h2>
+            <h2>Digite uma letra</h2>
             <form>
                 <input type="text" name='letter' maxLength='1' required />
                 <button>Jogar</button>
@@ -33,8 +49,8 @@ const Game = ({processWord}) => {
 
         <div className='wrong-words-container'>
             <p>Letras já utilizadas:</p> 
-            <span>A,</span>
-            <span>B,</span>    
+            <span>A, </span>
+            <span>B, </span>    
         </div>
 
     </div>
@@ -44,5 +60,12 @@ const Game = ({processWord}) => {
 export default Game
 
 Game.propTypes = {
-    processWord: PropTypes.func.isRequired
+    processWord: PropTypes.func.isRequired,
+    category: PropTypes.string.isRequired,
+    word: PropTypes.string.isRequired,
+    letters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    score: PropTypes.number.isRequired,
+    wrongsLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    guessedLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    attempts: PropTypes.number.isRequired
 }

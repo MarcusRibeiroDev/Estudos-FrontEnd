@@ -3,14 +3,15 @@
 }
 
 .game .tips span {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     color: yellow;
 }
 
 .word-container {
-    border: 2.4rem solid yellow;
-    margin-top: 4rem;
+    border: 2.4rem solid #ffea6a;
+    margin-top: 3rem;
     display: flex;
+    gap: .1rem;
     padding: 1rem;
     width: fit-content;
 }
@@ -34,12 +35,26 @@
     font-size: 8rem;
 }
 
-.input-letter h2 {
+.game .input-letter h2 {
     margin-top: 4rem;
 }
 
-.input-letter input {
-    height: 7rem;
-    width: 7rem;
+.game .input-letter input {
+    height: 6rem;
+    width: 6rem;
     margin-right: 2rem;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    border: .5rem solid black;
+}
+
+.game .input-letter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrong-words-container span {
+    font-size: 2rem;
 }

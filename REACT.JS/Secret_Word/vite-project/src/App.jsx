@@ -53,10 +53,14 @@ function App() {
   // Palavras aleatórias
   const [wordsListGame] = useState(wordsList)
 
-  // Selecionando categorias, palavras e letras
+  // States necessários para usar na página Game
   const [category, setCategory] = useState('')
   const [word, setWord] = useState('')
-  const [letters, setLetters] = useState('')
+  const [letters, setLetters] = useState([])
+  const [score, setScore] = useState(0)
+  const [wrongsLetters, setWrongsWords] = useState([])
+  const [attempts, setAttempts] = useState(5)
+  const [guessedLetters, setGuessedLetters] = useState([])
 
   // Setando categorias, palavras e letras
   const processWordAndCategory = ()=> {
@@ -72,7 +76,19 @@ function App() {
   return (
     <div className='app-container'>
         {gameStage === 'start' && <StartScreen startGame={startGame}/>}
-        {gameStage === 'game' && <Game processWord={processWord} />}
+
+        {gameStage === 'game' &&
+        <Game 
+            processWord={processWord}
+            category={category}
+            word={word}
+            letters={letters}
+            score={score}
+            wrongsLetters={wrongsLetters}
+            attempts={attempts}
+            guessedLetters={guessedLetters}
+        />}
+
         {gameStage === 'end-game' && <EndGame retryGame={retryGame} />}
     </div>
   )

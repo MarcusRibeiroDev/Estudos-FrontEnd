@@ -1,9 +1,3 @@
-.color1 {color: #ecc651;}
-.color2 {color: #e7d66b;}
-.color3 {color: #123869;}
-.color4 {color: #126977;}
-.color5 {color: #17a78e;}
-
 html {
     font-size: 62.5%;
 }
@@ -13,8 +7,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    background: rgb(18,56,105);
-    background: linear-gradient(90deg, rgba(18,56,105,1) 33%, rgba(18,105,119,1) 63%, rgba(23,167,142,1) 100%);
+    background-color: #60264d;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -26,17 +19,21 @@ button {
     height: 5rem;
     border-radius: 1.5rem;
     padding: 1rem;
-    color: #fff;
-    background-color: #123869;
+    color: black;
+    background-color: #ffc799;
     border-color: #fff;
     transition: .4s;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #126977;
+    background-color: #ffaaa8;
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4rem;
+}
+
+p {
+    font-size: 2rem;
 }

@@ -30,17 +30,15 @@ function App() {
     console.log(categoryRandom)
     console.log(wordRandom)
     console.log(lettersCount)
+    console.log(wrongsLetters.length)
+    console.log(guessedLetters.length)
+
 
     setCategory(categoryRandom)
     setWord(wordRandom)
     setLetters(lettersCount)
 
     setGameStage(stages[1].stage)
-  }
-
-  // Processar palavra
-  const processWord = ()=> {
-    setGameStage(stages[2].stage)
   }
 
   // Finalizar e reiniciar game
@@ -73,12 +71,43 @@ function App() {
     return [categoryRandom, wordRandom]
   }
 
+      // Processar a palavra
+      const processWord = (letter)=> {
+        const inputLetter = letter.toLowerCase()
+
+        console.log(inputLetter) 
+
+        if (
+          guessedLetters.includes(inputLetter) ||
+          wrongsLetters.includes(inputLetter)
+      ) {
+          return;
+      }
+
+        if(letters.includes(inputLetter)){
+
+            setGuessedLetters((array)=>{
+              return [...array, inputLetter]
+            })
+
+            setScore(score + 10)
+
+        } else {
+
+            setWrongsWords((array) =>{
+              return [...array, inputLetter]
+            })
+
+        }
+
+    }
+
   return (
     <div className='app-container'>
         {gameStage === 'start' && <StartScreen startGame={startGame}/>}
 
         {gameStage === 'game' &&
-        <Game 
+        <Game
             processWord={processWord}
             category={category}
             word={word}

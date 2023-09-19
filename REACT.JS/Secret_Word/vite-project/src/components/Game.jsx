@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import './Game.css'
 import PropTypes from "prop-types";
 
@@ -11,6 +12,22 @@ const Game = ({
     attempts,
     guessedLetters
 }) => {
+
+    const [letter, setLetter] = useState('')
+
+    const buttonRef = useRef()
+
+    const handleSubmitLetter = (e) =>{
+        e.preventDefault()
+
+        processWord(letter)
+
+        setLetter('')
+
+        buttonRef.current.focus()
+
+    }
+
   return (
     <div className='game'>
 
@@ -32,7 +49,7 @@ const Game = ({
                     letters.map((l, i)=> (
 
                         guessedLetters.includes(l) ?
-                        (<span className='letter' key={i}>{l}</span>) : (<span className='white-canvas' key={i}></span>)
+                        (<span className='letter' key={i}>{l.toUpperCase()}</span>) : (<span className='white-canvas' key={i}></span>)
 
                     ))
                 }
@@ -41,9 +58,9 @@ const Game = ({
 
         <div className='input-letter'>
             <h2>Digite uma letra</h2>
-            <form>
-                <input type="text" name='letter' maxLength='1' required />
-                <button>Jogar</button>
+            <form onSubmit={handleSubmitLetter}>
+                <input type="text" name='letter' maxLength='1' required value={letter} onChange={(e)=>{setLetter(e.target.value)}} ref={buttonRef} />
+                <button type='submit' >Jogar</button>
             </form>
         </div>
 
@@ -58,14 +75,3 @@ const Game = ({
 }
 
 export default Game
-
-Game.propTypes = {
-    processWord: PropTypes.func.isRequired,
-    category: PropTypes.string.isRequired,
-    word: PropTypes.string.isRequired,
-    letters: PropTypes.arrayOf(PropTypes.string).isRequired,
-    score: PropTypes.number.isRequired,
-    wrongsLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
-    guessedLetters: PropTypes.arrayOf(PropTypes.string).isRequired,
-    attempts: PropTypes.number.isRequired
-}

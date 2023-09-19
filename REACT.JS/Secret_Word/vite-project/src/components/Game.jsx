@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const Game = ({
     processWord,
     category,
-    word,
     letters,
     score,
     wrongsLetters,
@@ -66,8 +65,11 @@ const Game = ({
 
         <div className='wrong-words-container'>
             <p>Letras já utilizadas:</p> 
-            <span>A, </span>
-            <span>B, </span>    
+            {
+                wrongsLetters.map((w, i)=>(
+                    (<span key={i}>{w}, </span>)
+                ))
+            }   
         </div>
 
     </div>

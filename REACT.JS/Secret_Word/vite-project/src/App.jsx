@@ -27,25 +27,26 @@ function App() {
 
     const lettersCount = wordRandom.split('')
 
-    console.log(categoryRandom)
-    console.log(wordRandom)
-    console.log(lettersCount)
-    console.log(wrongsLetters.length)
-    console.log(guessedLetters.length)
-
-
     setCategory(categoryRandom)
     setWord(wordRandom)
     setLetters(lettersCount)
 
+    console.log(lettersCount)
+
     setGameStage(stages[1].stage)
   }
 
-  // Finalizar e reiniciar game
+  // Reiniciar o game
   const retryGame = ()=> {
+    setScore(0)
+    setAttempts(5)
+    setWrongsWords([])
+    setGuessedLetters([])
+
     setGameStage(stages[0].stage)
   }
 
+  // Tela inicial
   const [gameStage, setGameStage] = useState(stages[0].stage)
 
   // Palavras aleatórias
@@ -59,6 +60,24 @@ function App() {
   const [wrongsLetters, setWrongsWords] = useState([])
   const [attempts, setAttempts] = useState(5)
   const [guessedLetters, setGuessedLetters] = useState([])
+
+  // Monitorar as tentativas caso zere mostre game over
+  useEffect(()=> {
+    if(attempts < 1){
+      setGameStage(stages[2].stage)
+    }
+  }, [attempts, stages])
+
+  // Monitorar as letras acertadas para somar os pontos
+  useEffect(()=>{
+
+    const uniqueLetters = [...new Set(letters)]
+
+    if(uniqueLetters.length === guessedLetters.length){
+        setScore((score)=> score += 100)
+    }
+
+  }, [guessedLetters, letters]) // *************************************************************CONTINUAR DAQUI, USAR OS CALLBACKS E RENDRIZAR UMA NOVA PALAVRA
 
   // Setando categorias, palavras e letras
   const processWordAndCategory = ()=> {
@@ -90,14 +109,15 @@ function App() {
               return [...array, inputLetter]
             })
 
-            setScore(score + 10)
-
+          
         } else {
 
             setWrongsWords((array) =>{
               return [...array, inputLetter]
             })
 
+
+            setAttempts(attempts - 1)
         }
 
     }
@@ -110,7 +130,6 @@ function App() {
         <Game
             processWord={processWord}
             category={category}
-            word={word}
             letters={letters}
             score={score}
             wrongsLetters={wrongsLetters}
@@ -118,7 +137,7 @@ function App() {
             guessedLetters={guessedLetters}
         />}
 
-        {gameStage === 'end-game' && <EndGame retryGame={retryGame} />}
+        {gameStage === 'end-game' && <EndGame retryGame={retryGame} score={score}/>}
     </div>
   )
 }

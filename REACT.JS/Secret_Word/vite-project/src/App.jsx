@@ -66,18 +66,20 @@ function App() {
     if(attempts < 1){
       setGameStage(stages[2].stage)
     }
-  }, [attempts, stages])
+  }, [attempts])
 
   // Monitorar as letras acertadas para somar os pontos
   useEffect(()=>{
 
     const uniqueLetters = [...new Set(letters)]
 
-    if(uniqueLetters.length === guessedLetters.length){
-        setScore((score)=> score += 100)
+    if(gameStage === 'game'){
+      if(uniqueLetters.length === guessedLetters.length){
+        setScore((Actualscore)=> Actualscore += 100)
+      }
     }
 
-  }, [guessedLetters, letters]) // *************************************************************CONTINUAR DAQUI, USAR OS CALLBACKS E RENDRIZAR UMA NOVA PALAVRA
+  }, [guessedLetters])
 
   // Setando categorias, palavras e letras
   const processWordAndCategory = ()=> {

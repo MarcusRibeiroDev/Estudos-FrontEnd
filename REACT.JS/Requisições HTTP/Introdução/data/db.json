@@ -1,0 +1,30 @@
+{
+    "produtos": [
+      {
+        "id": 1,
+        "nome": "Camiseta básica",
+        "preco": 19.99
+      },
+      {
+        "id": 2,
+        "nome": "Calça jeans",
+        "preco": 49.99
+      },
+      {
+        "id": 3,
+        "nome": "Vestido floral",
+        "preco": 39.99
+      },
+      {
+        "id": 4,
+        "nome": "Tênis esportivo",
+        "preco": 59.99
+      },
+      {
+        "id": 5,
+        "nome": "Jaqueta de couro",
+        "preco": 79.99
+      }
+    ]
+  }
+  

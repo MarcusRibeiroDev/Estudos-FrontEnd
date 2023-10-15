@@ -1,26 +1,32 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import {useFetch} from '../hooks/useFetch.jsx'
 
 function App() {
 
   const url = 'http://localhost:3000/produtos' // Url da API
 
-  const [list, setList] = useState([]) // Lista de produtos
+  //const [list, setList] = useState([]) // Lista de produtos
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
+  const [idDelete, setIdDelete] = useState('')
 
   // 1 - Resgatando Dados
-  useEffect(()=>{
-    async function fetchList(){
-      const res = await fetch(url)
-      const data = await res.json()
+  // useEffect(()=>{
+  //   async function fetchList(){
+  //     const res = await fetch(url)
+  //     const data = await res.json()
 
-      setList(data)
-    }
+  //     setList(data)
+  //   }
 
-    fetchList()
-  }, [])
+  //   fetchList()
+  // }, [])
+
+  // 2 - Resgatando Dados com Hooks Personalizados
+
+  const {data:items, httpConfig, loading, error} = useFetch(url)
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -30,19 +36,19 @@ function App() {
       price,
     }
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(newProduct)
-    })
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type" : "application/json"
+    //   },
+    //   body: JSON.stringify(newProduct)
+    // })
 
-    const updatedList = await res.json()
+    httpConfig(newProduct, 'POST')
 
-    console.log(updatedList)
+    //const updatedList = await res.json()
 
-    setList((listPreview) => [...listPreview, updatedList])
+    //setList((listPreview) => [...listPreview, updatedList])
 
     setName('')
     setPrice('')
@@ -52,28 +58,49 @@ function App() {
     <>
       <div className='app'>
         <h1>Lista de produtos</h1>
+        {loading && <h2>Carregando...</h2>}
+        
+        {error && <p>{error}</p>}
 
-        <ul>
-          {list.map((p)=>(
-            <li key={p.id}>{p.name} - R$ {p.price}</li>
+        {!error && 
+          <ul>
+          {items && items.map((p)=>(
+            <li key={p.id}>ID {p.id} - {p.name} = R$ {p.price}</li>
           ))}
-        </ul>
+         </ul>
+        }
 
         <hr />
 
-        <form onSubmit={handleSubmit}>
-            <label>
-              Nome:
-              <input type="text" name="name" value={name} onChange={(e)=> setName(e.target.value)}/>
-            </label>
+        {!loading && 
+          <div>
+            <h2>Criar produto</h2>
+            <form onSubmit={handleSubmit}>
+              <div className='create-product'>
+                <label>
+                  Nome:
+                  <input type="text" name="name" value={name} onChange={(e)=> setName(e.target.value)}/>
+                </label>
+    
+                <label>
+                  Preço:
+                  <input type="text" name="price" value={price} onChange={(e)=> setPrice(e.target.value)}/>
+                </label>
+    
+                <button type='submit'>Enviar</button>
+              </div>
+            </form>
+            <h2>Deletar produto</h2>
+            <div className='delete-product'> 
+              <label>
+                ID:
+              <input type="text" value={idDelete} placeholder='Digite o ID do elemento a ser deletado' onChange={(e)=> setIdDelete(e.target.value)}/>
+              </label>
+              <button type='submit' onClick={()=>{httpConfig(null, 'DELETE', idDelete)}}>Deletar</button>
+            </div>
+          </div>
+        }
 
-            <label>
-              Preço:
-              <input type="text" name="price" value={price} onChange={(e)=> setPrice(e.target.value)}/>
-            </label>
-
-            <button type='submit'>Enviar</button>
-        </form>
       </div>
     </>
   )

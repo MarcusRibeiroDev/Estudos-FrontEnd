@@ -4,12 +4,31 @@ form {
     gap: 20px;
 }
 
-form input{
-    width: 100%;
+input{
+    width: 50%;
     margin: 5px 0px;
+    display: block;
 }
 
 .app{
     width: 500px;
     height: 500px;
+}
+
+button{
+    width: 50%;
+}
+
+.delete-product{
+    margin: 10px 0px;
+    border: 2px solid gray;
+    background-color: rgb(84, 84, 250);
+    padding: 10px;
+}
+
+.create-product{
+    margin: 10px 0px;
+    border: 2px solid gray;
+    background-color: rgb(250, 225, 84);
+    padding: 10px;
 }

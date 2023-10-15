@@ -6,11 +6,6 @@
       "price": 19.99
     },
     {
-      "id": 2,
-      "name": "Calça jeans",
-      "price": 49.99
-    },
-    {
       "id": 3,
       "name": "Vestido floral",
       "price": 39.99
@@ -69,6 +64,76 @@
       "name": "Chinelo",
       "price": "40",
       "id": 14
+    },
+    {
+      "name": "Sandália",
+      "price": "90",
+      "id": 15
+    },
+    {
+      "name": "Sandália Premium",
+      "price": "200",
+      "id": 16
+    },
+    {
+      "name": "Sandália Premium",
+      "price": "90",
+      "id": 17
+    },
+    {
+      "name": "Sabonete",
+      "price": "10",
+      "id": 18
+    },
+    {
+      "name": "Sandália",
+      "price": "10",
+      "id": 19
+    },
+    {
+      "name": "Sandália",
+      "price": "10",
+      "id": 20
+    },
+    {
+      "name": "Sandália",
+      "price": "10",
+      "id": 21
+    },
+    {
+      "name": "Sandália Premium",
+      "price": "90",
+      "id": 22
+    },
+    {
+      "name": "Sandália Premium",
+      "price": "90",
+      "id": 23
+    },
+    {
+      "name": "Sabonete",
+      "price": "200",
+      "id": 24
+    },
+    {
+      "name": "Brinco Premium",
+      "price": "50",
+      "id": 25
+    },
+    {
+      "name": "Brinco Premium",
+      "price": "200",
+      "id": 26
+    },
+    {
+      "name": "Sapato",
+      "price": "20",
+      "id": 27
+    },
+    {
+      "name": "Sapato",
+      "price": "20",
+      "id": 28
     }
   ]
 }

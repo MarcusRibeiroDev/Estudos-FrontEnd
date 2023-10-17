@@ -1,0 +1,19 @@
+nav{
+    background-color: black;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+nav a{
+    margin: 5px 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: chartreuse;
+    font-weight: bold;
+}

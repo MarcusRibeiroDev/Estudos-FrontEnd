@@ -1,0 +1,13 @@
+.ul-home {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.ul-home li{
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid black;
+    width: 25%;
+}

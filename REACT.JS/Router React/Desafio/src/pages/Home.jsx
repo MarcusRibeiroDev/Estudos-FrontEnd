@@ -1,4 +1,5 @@
 import {useFetch} from '../hooks/useFetch.jsx'
+import {Link} from 'react-router-dom'
 
 import './Home.css'
 
@@ -23,6 +24,7 @@ const Home = ()=>{
                             <li key={item.id}>
                                 <h1>{item.name}</h1>
                                 <p>{item.price}</p>
+                                <Link to={`/products/${item.id}`} >Detalhes</Link>
                             </li>
                         ))
                     }

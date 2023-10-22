@@ -20,7 +20,7 @@ const Product = () => {
             <div className="product-container">
                 <h1>{produto.name}</h1>
                 <p>{produto.price}</p>
-                <Link to={`/products/${id}/Info`} >Certificações</Link>
+                <Link to={`/products/${id}/info`} >Certificações</Link>
             </div>
         )}
     </div>

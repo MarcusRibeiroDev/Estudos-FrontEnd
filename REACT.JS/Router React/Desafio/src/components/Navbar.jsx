@@ -10,7 +10,7 @@ const Navbar = () => {
       <Link to='/About'>About</Link> */}
 
       <NavLink to='/'>Home</NavLink>
-      <NavLink to='/About'>About</NavLink>
+      <NavLink to='/about'>About</NavLink>
 
     </nav>
   )

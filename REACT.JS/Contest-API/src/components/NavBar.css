@@ -1,6 +1,7 @@
 .navbar {
     background-color: #ccc;
     padding: 1rem 3rem;
+    width: 100%;
 }
 
 .navbar nav {

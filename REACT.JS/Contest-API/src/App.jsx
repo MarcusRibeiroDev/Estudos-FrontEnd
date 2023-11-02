@@ -6,6 +6,7 @@ import Profile from './pages/Profile.jsx'
 import Contact from './pages/Contact.jsx'
 
 import { ConterContextProvider } from './context/CounterContext'
+import { TitleContextProvider } from './context/TitleContext'
 
 
 function App() {
@@ -13,19 +14,21 @@ function App() {
   return (
     <div className='app'>
 
-        <ConterContextProvider>
-          <BrowserRouter>
+        <TitleContextProvider>
+          <ConterContextProvider>
+            <BrowserRouter>
 
-            <NavBar />
+              <NavBar />
 
-            <Routes>
-                <Route path='/about' element={<About />} />
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/contact' element={<Contact />} />
-            </Routes>
+              <Routes>
+                  <Route path='/about' element={<About />} />
+                  <Route path='/profile' element={<Profile />} />
+                  <Route path='/contact' element={<Contact />} />
+              </Routes>
 
-          </BrowserRouter>
-        </ConterContextProvider>
+            </BrowserRouter>
+          </ConterContextProvider>
+        </TitleContextProvider>
 
     </div>
   )

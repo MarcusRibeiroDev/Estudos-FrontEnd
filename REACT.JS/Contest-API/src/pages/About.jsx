@@ -1,9 +1,11 @@
-import { useContext } from "react"
-import { ConterContext } from "../context/CounterContext"
+// import { useContext } from "react"
+// import { ConterContext } from "../context/CounterContext"
+
+import { useCounterContext } from "../hooks/useCounterContext"
 
 const About = () => {
 
-  const { counter, setCounter } = useContext(ConterContext)
+  const { counter, setCounter } = useCounterContext()
 
   return (
     <>

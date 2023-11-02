@@ -1,8 +1,11 @@
-
+import { useTitleContext } from "../hooks/useTitleContext"
 
 const Profile = () => {
+
+  const { state } = useTitleContext()
+
   return (
-    <div>Profile</div>
+    <div style={state}>Profile</div>
   )
 }
 

@@ -1,5 +1,9 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
+//Components
+import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
+
 // CSS
 import './App.css';
 
@@ -10,8 +14,8 @@ import Home from './pages/Home/Home'
 function App() {
   return (
     <div className="App">
-      <h1>MiniBlog</h1>
       <BrowserRouter>
+        <NavBar />
         <div className='container'>
           <Routes>
               <Route path='/' element={<Home />}/>

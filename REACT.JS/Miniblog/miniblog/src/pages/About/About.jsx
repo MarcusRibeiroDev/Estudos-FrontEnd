@@ -1,9 +1,18 @@
 // CSS
 import styles from './About.modules.css'
 
+//import { useAuthContext } from '../../context/AuthContext'
+
 const About = () => {
+
+  //const {context} = useAuthContext()
+
+  //console.log(context)
+
   return (
-    <h1>About</h1>
+    <div className='about'>
+        <h1>About</h1>
+    </div>
   )
 }
 

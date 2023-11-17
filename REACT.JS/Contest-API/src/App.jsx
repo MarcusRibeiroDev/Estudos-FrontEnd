@@ -8,6 +8,8 @@ import Contact from './pages/Contact.jsx'
 import { ConterContextProvider } from './context/CounterContext'
 import { TitleContextProvider } from './context/TitleContext'
 
+// context
+import { useAuthContext } from './context/AuthContext.js'
 
 function App() {
 

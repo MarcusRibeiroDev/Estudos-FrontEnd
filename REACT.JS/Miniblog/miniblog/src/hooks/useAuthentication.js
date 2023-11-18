@@ -1,12 +1,12 @@
-import { db } from '../firebase/config'
+import { db } from '../firebase/config' // Import necessário para o firebase
 
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateProfile,
-    signOut
-} from 'firebase/auth'
+    getAuth, // Obtém a instância de autenticação
+    createUserWithEmailAndPassword, // Cria um usuário com e-mail e senha
+    signInWithEmailAndPassword, // Autentica usuário com e-mail e senha
+    updateProfile, // Atualiza o perfil do usuário
+    signOut // Faz logout do usuário
+} from 'firebase/auth' // Métodos do Firebase
 
 import { useState, useEffect } from 'react'
 
@@ -24,6 +24,12 @@ export const useAuthentication = ()=>{
         if(cancelled){
             return;
         }
+    }
+
+    //Função para logout do usuário
+    const logout = ()=>{
+        checkIfIsCancelled()
+        signOut(auth)
     }
 
     // Função que cria o usuário
@@ -78,6 +84,7 @@ export const useAuthentication = ()=>{
         createUser,
         error,
         loading,
-        sucess
+        sucess,
+        logout
     } // Returno de tudo que será útil do hook
 }

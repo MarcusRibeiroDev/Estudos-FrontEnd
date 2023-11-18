@@ -1,7 +1,14 @@
 import style from './NavBar.module.css'
 import { NavLink } from 'react-router-dom'
 
+import { useAuthentication } from '../../hooks/useAuthentication'
+import { useAuthContext } from '../../context/AuthContext'
+
 const NavBar = () => {
+
+    const { user } = useAuthContext()
+    console.log(user)
+
   return (
     <nav className={style.navbar}>
         <NavLink to='/' className={style.brand}>
@@ -15,16 +22,34 @@ const NavBar = () => {
                     Home
                 </NavLink>
             </li>
-            <li>
-                <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/login'>
-                    Entrar
-                </NavLink>
-            </li>
-            <li>
-                <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/register'>
-                    Cadastrar
-                </NavLink>
-            </li>
+            {!user && (
+                <>
+                    <li>
+                        <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/login'>
+                            Entrar
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/register'>
+                            Cadastrar
+                        </NavLink>
+                    </li>
+                </>
+            )}
+            {user && (
+                <>
+                    <li>
+                        <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/dashboard'>
+                            Dashboard
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/posts/create'>
+                            Posts
+                        </NavLink>
+                    </li>
+                </>
+            )}
             <li>
                 <NavLink className={({isActive})=>(isActive ? style.active : '')} to='/about'>
                     Sobre

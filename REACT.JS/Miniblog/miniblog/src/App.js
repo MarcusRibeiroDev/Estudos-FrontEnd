@@ -17,6 +17,8 @@ import About from './pages/About/About';
 import Home from './pages/Home/Home'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import Posts from './pages/Posts/Posts'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 //Context
 import { AuthProvider } from './context/AuthContext.js'
@@ -40,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthProvider value={user}>
+      <AuthProvider value={{user}}>
         <BrowserRouter>
           <NavBar />
           <div className='container'>
@@ -49,6 +51,8 @@ function App() {
                 <Route path='/about' element={<About />}/>
                 <Route path='/register' element={<Register />}/>
                 <Route path='/login' element={<Login />}/>
+                <Route path='/posts/create' element={<Posts />}/>
+                <Route path='/dashboard' element={<Dashboard />}/>
             </Routes>
           </div>
           <Footer />

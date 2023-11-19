@@ -26,6 +26,26 @@ export const useAuthentication = ()=>{
         }
     }
 
+    //Função para fazer login
+    const login = async (data)=>{
+        checkIfIsCancelled()
+        setLoading(true)
+        setError(null)
+
+        try{
+            await signInWithEmailAndPassword(auth, data.email, data.password) // Método que faz a autenticação
+        }
+        catch(error){
+            if(error.message.includes('credentials')){
+                setError('Credencias são inválidas, reveja o email e senha')
+            } else{
+                setError('Ocorreu um erro tente novamente mais tarde')
+            }
+
+            setLoading(false)
+        }
+    }
+
     //Função para logout do usuário
     const logout = ()=>{
         checkIfIsCancelled()
@@ -85,6 +105,7 @@ export const useAuthentication = ()=>{
         error,
         loading,
         sucess,
-        logout
+        logout,
+        login
     } // Returno de tudo que será útil do hook
 }

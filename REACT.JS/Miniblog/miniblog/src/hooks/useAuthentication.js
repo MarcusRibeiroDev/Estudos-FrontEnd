@@ -36,7 +36,7 @@ export const useAuthentication = ()=>{
         setError(null)
 
         try{
-            const user = await createUserWithEmailAndPassword(
+            const {user} = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
                 data.password
@@ -58,8 +58,6 @@ export const useAuthentication = ()=>{
                 systemError = 'Esse usuário já está cadastrado'
             } else if(error.message.includes("Password")){
                 systemError = 'Essa senha é fraca'
-            } else if(error.message.includes("userInternal")){
-                setSucess(true)
             } else {
                 systemError = 'Erro de servidor'
             }

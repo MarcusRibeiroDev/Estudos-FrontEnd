@@ -1,44 +1,43 @@
 import styles from "./Register.module.css";
 
 import { useEffect, useState } from "react";
-import { useAuthentication } from '../../hooks/useAuthentication.js'
+import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
+  const [displayName, setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const [displayName, setDisplayName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
+  const { createUser, error: authError, loading } = useAuthentication();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //hook de criar usuário
-
-  const {createUser, loading, error: authError, sucess} = useAuthentication()
-
-  const handleSubmit =  async (e)=>{
-    e.preventDefault()
-    setError('')
+    setError("");
 
     const user = {
       displayName,
       email,
-      password
+      password,
+    };
+
+    if (password !== confirmPassword) {
+      setError("As senhas precisam ser iguais.");
+      return;
     }
 
-    if(password !== confirmPassword){
-      setError('As senhas precisam ser iguais')
-      return
-    }
+    const res = await createUser(user);
 
-    const res = await createUser(user)
-  }
+    console.log(res);
+  };
 
-  useEffect(()=>{
-    if(authError){
-      setError(authError)
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
     }
-  }, [authError])
+  }, [authError]);
 
   return (
     <div className={styles.register}>
@@ -52,8 +51,8 @@ const Register = () => {
             name="displayName"
             required
             placeholder="Nome do usuário"
+            onChange={(e) => setDisplayName(e.target.value)}
             value={displayName}
-            onChange={(e)=> setDisplayName(e.target.value)}
           />
         </label>
         <label>
@@ -63,8 +62,8 @@ const Register = () => {
             name="email"
             required
             placeholder="E-mail do usuário"
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
-            onChange={(e)=> setEmail(e.target.value)}
           />
         </label>
         <label>
@@ -74,8 +73,8 @@ const Register = () => {
             name="password"
             required
             placeholder="Insira a senha"
+            onChange={(e) => setPassword(e.target.value)}
             value={password}
-            onChange={(e)=> setPassword(e.target.value)}
           />
         </label>
         <label>
@@ -85,13 +84,16 @@ const Register = () => {
             name="confirmPassword"
             required
             placeholder="Confirme a senha"
+            onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
-            onChange={(e)=> setConfirmPassword(e.target.value)}
           />
         </label>
-        {!loading && <button className="btn" type="submit">Enviar</button>}
-        {loading && <button className="btn" type="submit" disabled>Aguarde...</button>}
-        {sucess && <p className="sucess">Usuário criado com sucesso</p>}
+        {!loading && <button className="btn">Entrar</button>}
+        {loading && (
+          <button className="btn" disabled>
+            Aguarde...
+          </button>
+        )}
         {error && <p className="error">{error}</p>}
       </form>
     </div>

@@ -1,83 +1,114 @@
-import { db } from '../firebase/config.js'  // Para o firebase entender que estamos o utilizando
-
 import {
-    getAuth,
-    signOut,
-    updateProfile,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
-} from 'firebase/auth'
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  signOut,
+} from "firebase/auth";
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from "react";
 
-export const useAuthentication = ()=>{
-    const auth = getAuth()
+export const useAuthentication = () => {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [sucess, setSucess] = useState(null)
+  // deal with memory leak
+  const [cancelled, setCancelled] = useState(false);
 
+  const auth = getAuth();
 
-    //deal with memory leak
-    const [cancelled, setCancelled] = useState(false)
+  function checkIfIsCancelled() {
+    if (cancelled) {
+      return;
+    }
+  }
 
-    const memoryLeak = ()=>{
-        if(cancelled){
-            return
-        }
+  const createUser = async (data) => {
+    checkIfIsCancelled();
+
+    setLoading(true);
+
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      await updateProfile(user, {
+        displayName: data.displayName,
+      });
+
+      return user;
+    } catch (error) {
+      console.log(error.message);
+      console.log(typeof error.message);
+
+      let systemErrorMessage;
+
+      if (error.message.includes("Password")) {
+        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
+      } else if (error.message.includes("email-already")) {
+        systemErrorMessage = "E-mail já cadastrado.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+      }
+
+      setError(systemErrorMessage);
     }
 
-    const createUser = async (data)=>{
+    setLoading(false);
+  };
 
-        memoryLeak()
+  const logout = () => {
+    checkIfIsCancelled();
 
-        setSucess(null)
-        setLoading(true)
-        setError(null)
+    signOut(auth);
+  };
 
-        try{
-            const {user} = await createUserWithEmailAndPassword(
-                auth,
-                data.email,
-                data.password
-            )
+  const login = async (data) => {
+    checkIfIsCancelled();
 
-            await updateProfile(user, {
-                displayName: data.displayName
-            })
+    setLoading(true);
+    setError(false);
 
-            setSucess(true)
-            setLoading(false)
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+    } catch (error) {
+      console.log(error.message);
+      console.log(typeof error.message);
+      console.log(error.message.includes("user-not"));
 
-            return user
+      let systemErrorMessage;
 
-        } catch(error){
-            let systemError
+      if (error.message.includes("user-not-found")) {
+        systemErrorMessage = "Usuário não encontrado.";
+      } else if (error.message.includes("wrong-password")) {
+        systemErrorMessage = "Senha incorreta.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+      }
 
-            if(error.message.includes('email-already')){
-                systemError = 'Esse usuário já está cadastrado'
-            } else if(error.message.includes("Password")){
-                systemError = 'Essa senha é fraca'
-            } else {
-                systemError = 'Erro de servidor'
-            }
+      console.log(systemErrorMessage);
 
-            setError(systemError)
-        }
-
-        setLoading(false)
+      setError(systemErrorMessage);
     }
 
-    useEffect(()=>{
-        return () => setCancelled(true)
-    }, [])
+    console.log(error);
 
-    return {
-        createUser,
-        loading,
-        error,
-        sucess,
-        auth
-    }
-}
+    setLoading(false);
+  };
 
+  useEffect(() => {
+    return () => setCancelled(true);
+  }, []);
+
+  return {
+    auth,
+    createUser,
+    error,
+    logout,
+    login,
+    loading,
+  };
+};

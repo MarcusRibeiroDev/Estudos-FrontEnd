@@ -1,4 +1,5 @@
 import "./App.css";
+import HookUseEffect from "./components/HookUseEffect";
 import HookUseReducer from "./components/HookUseReducer";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <HookUseReducer />
       <hr />
+      <HookUseEffect />
     </>
   );
 }

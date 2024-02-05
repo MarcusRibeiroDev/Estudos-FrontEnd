@@ -20,8 +20,6 @@ const HookUseRef = () => {
 
     SetValueName("");
 
-    console.log();
-
     inputName.current.focus();
   };
 

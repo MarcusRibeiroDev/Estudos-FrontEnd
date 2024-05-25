@@ -2,7 +2,7 @@ import styles from "./CreatePost.module.css";
 
 import { useState } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../contexts/AuthContext";
 
 const CreatePost = () => {
@@ -14,7 +14,7 @@ const CreatePost = () => {
 
   const { user } = useAuthValue();
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const { insertDocument, response } = useInsertDocument("posts");
 
@@ -41,7 +41,7 @@ const CreatePost = () => {
       isValid = false; // Define o formulário como inválido
     }
 
-    if(!isValid) return // Caso o isValid seja false ele vai parar a execução da função, evitando que seja inserido no db
+    if (!isValid) return; // Caso o isValid seja false ele vai parar a execução da função, evitando que seja inserido no db
 
     insertDocument({
       title,
@@ -53,7 +53,7 @@ const CreatePost = () => {
     });
 
     // redirect to home page
-   //navigate("/");
+    //navigate("/");
   };
 
   return (
